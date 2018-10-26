@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Bootstrap Example</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+        <link rel="icon" href="https://getbootstrap.com/favicon.ico">
+        <!-- Bootstrap core CSS -->
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <!-- Custom styles for this template -->
+        <link href="css/cover.css" rel="stylesheet">
+    
+    </head>
+    
+    <body>
+        
+        <!-- Strat Header -->
+        <header class="header">
+            <h1>Proyecto ARSW</h1>
+        </header>
+        <!-- End Header -->
+        
+        <div class="container-fluid">
+            <div class="row content">
+                <div class="col-sm-3 sidenav" >
+                    <div style="position: fixed;">
+                        <br>
+                        
+                        <h3>COMPRADOR: Juan Hernandez</h3>
+                        <img src="css/avatar3.jpg" class="img-circle" height="65" width="65" alt="Avatar">
+                        <hr>
+                        <h2><span class="label label-success">SALDO: $500.000 USD</span></h2>
+                        <button type="submit" class="btn btn-warning">Quiero ser Proveedor</button>
+                        <hr>
+                        <ul class="nav nav-pills nav-stacked">
+                            <li class="active"><a href="#section1">Inicio</a></li>
+                            <li><a href="#section2">Verduras</a></li>
+                            <li><a href="#section3">Frutas</a></li>
+                            <li><a href="#section3">Otros</a></li>
+                        </ul><br>
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Que desea comprar?..">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" type="button">
+                                    <span class="glyphicon glyphicon-search"></span>
+                                </button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-9">
+                    <div><h2><small class="label label-danger">Tu cuenta está en línea. Ya estás listo para comprar los productos de los siguientes proveedores.</small></h2></div>
+                    <div class="well">
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a data-toggle="tab" href="#comprar">Comprar</a></li>
+                            <li><a data-toggle="tab" href="#proceso">En Proceso</a></li>
+                            <li><a data-toggle="tab" href="#historial">Historial</a></li>
+                        </ul>
+                        <div class="tab-content">
+                            <div id="comprar" class="tab-pane fade in active">
+                                <table class="table table-condensed">
+                                    <thead>
+                                      <tr>
+                                        <th>Variedad</th>
+                                        <th>Proveedor</th>
+                                        <th>Descripcion</th>
+                                        <th>Metodo</th>
+                                        <th>Fecha</th>
+                                        <th></th>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                PAPA SUPREMA<br>
+                                                <h5>
+                                                    <span class="label label-danger">Comida</span> 
+                                                    <span class="label label-primary">Verdura</span>
+                                                    <span class="label label-success">Bulto</span> 
+                                                    <span class="label label">Ipsum</span>
+                                                </h5>
+                                            </td>
+                                            <td>Wilsson Pardo</td>
+                                            <td>
+                                                KILO 	1.00 	KILO 	$ 1,200.00 	$ 0.67 	€ 0.53
+                                            </td>
+                                            <td>Venta</td>
+                                            <th>Sep 27, 2015.</th>
+                                            <th><a href="sub/transaccion.html"><button type="submit"  class="btn btn-success">Comprar</button></a></th>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                MANDARINA ONECO
+                                                <h5>
+                                                    <span class="label label-danger">Comida</span> 
+                                                    <span class="label label-primary">Fruta</span>
+                                                    <span class="label label-success">Bulto</span> 
+                                                    <span class="label label">Ipsum</span>
+                                                </h5>
+                                            </td>
+                                            <td>Jose Quiroga</td>
+                                            <td>
+                                                BULTO 	50.00 	KILO 	$ 28,000.00 	$ 15.62   € 12.28
+                                            </td>
+                                            <td>Intercambio</td>
+                                            <th>Sep 24, 2015.</th>
+                                            <th><button type="submit" class="btn btn-default">Intercambiar</button></th>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div id="proceso" class="tab-pane fade">
+                                <span>En estos momentos no tiene abierto ningun tipo de transaccion...</span>
+                            </div>
+                            <div id="historial" class="tab-pane fade">
+                                <table class="table table-condensed">
+                                    <thead>
+                                      <tr>
+                                        <th>Variedad</th>
+                                        <th>Proveedor</th>
+                                        <th>Descripcion</th>
+                                        <th>Metodo</th>
+                                        <th>Fecha</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                PAPA SUPREMA<br>
+                                                <h5>
+                                                    <span class="label label-danger">Comida</span> 
+                                                    <span class="label label-primary">Verdura</span>
+                                                    <span class="label label-success">Bulto</span> 
+                                                    <span class="label label">Ipsum</span>
+                                                </h5>
+                                            </td>
+                                            <td>Wilsson Pardo</td>
+                                            <td>
+                                                KILO 	1.00 	KILO 	$ 1,200.00 	$ 0.67 	€ 0.53
+                                            </td>
+                                            <td>Venta</td>
+                                            <th>Sep 27, 2015.</th>
+                                            <th><button type="submit" class="btn btn-info">Ver</button></th>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                        </div>
+                    </div>
+                    
+                    
+                    
+                    <div class="well">
+                     
+                        <h4>No encontraste tu producto? Publicalo:</h4>
+                        <form role="form">
+                            <div class="form-group">
+                                <textarea class="form-control" rows="3" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-success">Submit</button>
+                        </form>
+                    </div>
+                    <div class="well">
+                        <p><span class="badge">2</span> Comments:</p><br>
+                        <div class="row">
+                            <div class="col-sm-2 text-center">
+                                <img src="css/avatar2.jpg" class="img-circle" height="65" width="65" alt="Avatar">
+                            </div>
+                            <div class="col-sm-10">
+                                <h4>Anja <small>Sep 29, 2015, 9:12 PM</small></h4>
+                                <p>Keep up the GREAT work! I am cheering for you!! Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p> 
+                                <br>
+                            </div>
+                            <div class="col-sm-2 text-center">
+                                <img src="css/avatar1.jpeg" class="img-circle" height="65" width="65" alt="Avatar">
+                            </div>
+                            <div class="col-sm-10">
+                                <h4>John Row <small>Sep 25, 2015, 8:25 PM</small></h4>
+                                <p>I am so happy for you man! Finally. I am looking forward to read about your trendy life. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                                <br>
+                                <p><span class="badge">1</span> Comment:</p><br>
+                                <div class="row">
+                                    <div class="col-sm-2 text-center">
+                                        <img src="css/avatar1.jpeg" class="img-circle" height="65" width="65" alt="Avatar">
+                                    </div>
+                                    <div class="col-xs-10">
+                                        <h4>Nested Bro <small>Sep 25, 2015, 8:28 PM</small></h4>
+                                        <p>Me too! WOW!</p>
+                                        <br>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer class="mastfoot mt-auto">
+            <div class="inner">
+                <p>Cover template for <a href="https://getbootstrap.com/">Bootstrap</a>, by Juan Villate.</p>
+            </div>
+        </footer>
+
+        <!-- Bootstrap core JavaScript
+        ================================================== -->
+        <!-- Placed at the end of the document so the pages load faster -->
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+        <script src="js/jquery.js"></script>
+
+
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/UsersController.js"></script>
+
+</body>
+</html>
