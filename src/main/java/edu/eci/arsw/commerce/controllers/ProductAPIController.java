@@ -24,7 +24,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @author camilolopez
  */
 @RestController
-@RequestMapping(value = "/project")
+@RequestMapping(value = "/producto")
 public class ProductAPIController {
 
     @Autowired
