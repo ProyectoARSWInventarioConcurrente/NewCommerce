@@ -13,7 +13,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @author camilo
  */
 @SpringBootApplication
-public class CommerceAPIDemoApplication {
+public class CommerceAPIDemoApplication{
 
     /**
      * @param args the command line arguments
