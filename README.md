@@ -8,8 +8,14 @@
 ## Documento de arquitectura
 
 ### Introduccion
+- Todo
 ### Conceptos generales
+- Todo
 ### Implementacion
+- Todo
 ### Pruebas
+- Todo
 ### Graficas
+- Todo
 ### Conclusiones
+- Todo
