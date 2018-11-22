@@ -1,9 +1,9 @@
 # Commerce project
 [![Heroku link](https://www.herokucdn.com/deploy/button.png)](https://commerce-project.herokuapp.com/)
 ## Miembros
-- Camilo Lopez
-- Juan Villate
-- Oscar Alba
+- Johan Camilo López Girón
+- Juan Manuel Villate Isaza
+- Oscar David Alba Valencia
 
 ## Documento de arquitectura
 
