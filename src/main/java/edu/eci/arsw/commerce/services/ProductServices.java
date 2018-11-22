@@ -18,16 +18,6 @@ import java.util.List;
 public interface ProductServices {
 
     /**
-     * Calcula el precio del producto dado su precio dado por el usuario y el
-     * descuento que el usuario quiera aplicar sobre el
-     *
-     * @param idProducto Id del producto el cual sera calculado el precio
-     * @return Retorna el precio calculado del producto
-     * @throws com.arsw.project.commerce.services.ProductServicesException
-     */
-    public Double calcularPrecioProductoPorId(Integer idProducto) throws ProductServicesException;
-
-    /**
      * Crear un nuevo producto dado sus atributos
      *
      * @param nombreProducto Nombre que tendra el producto
@@ -49,9 +39,8 @@ public interface ProductServices {
      * @param idUsuario Id del cliente al cual pertenece el producto
      * @throws com.arsw.project.commerce.services.ProductServicesException
      */
-    public void crearNuevaVariedadDeProducto(String nombreProducto, Integer idProducto,
-            String categoriaProducto, Integer idVProducto, String nombreVProducto,
-            Integer idUsuario) throws ProductServicesException;
+    public void crearNuevaVariedadDeProducto(Integer idProducto, Integer idVProducto,
+            String nombreVProducto, Integer idUsuario) throws ProductServicesException;
 
     /**
      * Obtener la variedad de producto dado un id
@@ -60,7 +49,7 @@ public interface ProductServices {
      * @return La variedad del producto
      * @throws com.arsw.project.commerce.services.ProductServicesException
      */
-    public Producto obtenerVariedadProductoPorId(Integer idProducto) throws ProductServicesException;
+    public VariedadProducto obtenerVariedadProductoPorId(Integer idProducto) throws ProductServicesException;
 
     /**
      * Obtiene todos los productos que han sido registrados
@@ -84,7 +73,7 @@ public interface ProductServices {
      * @return Lista con las variedades
      * @throws com.arsw.project.commerce.services.ProductServicesException
      */
-    public List<Producto> obtenerTodaLaVariedadDeProductosPorIdProducto(Integer idProducto) throws ProductServicesException;
+    public List<VariedadProducto> obtenerTodaLaVariedadDeProductosPorIdProducto(Integer idProducto) throws ProductServicesException;
 
     /**
      * Obtener la lista de variedades de productos los cuales pertenecen a un
