@@ -38,6 +38,9 @@ public class ProductAPIController {
     ProductServices prServices;
 
     /**
+     * Metodos de consulta *
+     */
+    /**
      * Este metodo retorna cada una de las variedades que estan creadas en la
      * base de datos de productos
      *
@@ -120,6 +123,61 @@ public class ProductAPIController {
     }
 
     /**
+     * Esta funcion permite obtener todas las variedades que tiene un producto
+     * mediante su Id
+     *
+     * @param idProducto El id del producto del cual se obtendran las variedades
+     * @return El estado de la peticion HTTP
+     */
+    @RequestMapping(method = RequestMethod.GET, path = {"variedades/{idProducto}"})
+    public ResponseEntity<?> obtenerVariedadesPorIdProducto(@PathVariable("idProducto") Integer idProducto) {
+        try {
+            Map<String, VariedadProducto> variedades = new HashMap();
+
+            List<VariedadProducto> variedadesArray = new ArrayList<>();
+            variedadesArray.addAll(prServices.obtenerTodaLaVariedadDeProductosPorIdProducto(idProducto));
+
+            for (VariedadProducto x : variedadesArray) {
+                variedades.put(x.getNombreVProducto(), x);
+            }
+
+            String codeToJson = new Gson().toJson(variedades);
+
+            return new ResponseEntity<>(codeToJson, HttpStatus.ACCEPTED);
+        } catch (Exception e) {
+            Logger.getLogger(ProductAPIController.class.getName()).log(Level.SEVERE, null, e);
+            return new ResponseEntity<>("No se ha podido retornar las variedades", HttpStatus.NOT_FOUND);
+        }
+    }
+
+    /**
+     * Esta funcion permite retornar una variedad de proudcto mediante su Id
+     *
+     * @param idVariedad El id de la variedad que se quiere retornar.
+     * @return El estado de la peticion HTTP
+     */
+    @RequestMapping(method = RequestMethod.GET, path = {"variedades/{idVariedad}"})
+    public ResponseEntity<?> obtenerVariedadPorId(@PathVariable("idVariedad") Integer idVariedad) {
+        try {
+            Map<String, VariedadProducto> variedades = new HashMap();
+
+            VariedadProducto vrProducto = prServices.obtenerVariedadProductoPorId(idVariedad);
+
+            variedades.put(vrProducto.getNombreVProducto(), vrProducto);
+
+            String codeToJson = new Gson().toJson(variedades);
+
+            return new ResponseEntity<>(codeToJson, HttpStatus.ACCEPTED);
+        } catch (Exception e) {
+            Logger.getLogger(ProductAPIController.class.getName()).log(Level.SEVERE, null, e);
+            return new ResponseEntity<>("No se ha podido retornar las variedades", HttpStatus.NOT_FOUND);
+        }
+    }
+
+    /**
+     * Metodos de registro *
+     */
+    /**
      * Este metodo permite la creacion de un Producto dentro de la aplicacion
      *
      * @param producto El Json del producto el cual sera creado
@@ -150,12 +208,15 @@ public class ProductAPIController {
     }
 
     /**
+     * Esta funcion permite registrar una nueva variedad de producto en el
+     * sistema
      *
-     * @param variedadProducto
-     * @return
+     * @param variedadProducto El codigo Json de la variedad del producto
+     * @return El estado de la peticion HTTP
      */
     @RequestMapping(method = RequestMethod.POST, path = "registrarvproducto")
     public ResponseEntity<?> registrarNuevaVariedadDeProducto(@RequestBody String variedadProducto) {
+        //Ejemplo Json {"1":{"idProducto":"100500","idVProducto":"200500","nombreVProducto":"Papa pastusa", "idUsuario":"300001"}}
         try {
 
             //Pasar el String JSON a un Map
