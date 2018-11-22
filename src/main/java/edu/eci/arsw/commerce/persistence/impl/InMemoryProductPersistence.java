@@ -58,10 +58,10 @@ public class InMemoryProductPersistence implements ProductPersistence {
     }
 
     @Override
-    public void crearNuevaVariedadDeProducto(String nombreProducto, Integer idProducto, String categoriaProducto, Integer idVProducto,
+    public void crearNuevaVariedadDeProducto(Integer idProducto, Integer idVProducto,
             String nombreVProducto, Integer idUsuario) throws ProductServicesException {
         try {
-            VariedadProducto nuevaVariedadProducto = new VariedadProducto(nombreProducto, idProducto, categoriaProducto,
+            VariedadProducto nuevaVariedadProducto = new VariedadProducto(idProducto,
                     idVProducto, nombreVProducto, idUsuario);
 
             Boolean existeVProducto = false;

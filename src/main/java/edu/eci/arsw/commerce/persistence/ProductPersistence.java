@@ -36,9 +36,8 @@ public interface ProductPersistence {
      * @param idUsuario
      * @throws ProductServicesException
      */
-    public void crearNuevaVariedadDeProducto(String nombreProducto, Integer idProducto,
-            String categoriaProducto, Integer idVProducto, String nombreVProducto,
-            Integer idUsuario) throws ProductServicesException;
+    public void crearNuevaVariedadDeProducto(Integer idProducto, Integer idVProducto,
+            String nombreVProducto, Integer idUsuario) throws ProductServicesException;
 
     /**
      *

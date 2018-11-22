@@ -39,12 +39,11 @@ public class VariedadProducto{
      * @param nombreVProducto Nombre de la variedad del producto
      * @param idUsuario Id del usuario al cual pertenece el producto
      */
-    public VariedadProducto(String nombreProducto, Integer idProducto,
-            String categoriaProducto, Integer idVProducto, String nombreVProducto,
-            Integer idUsuario) {
-        this.idVProducto = idVProducto;
-        this.nombreVProducto = nombreVProducto;
+    public VariedadProducto(Integer idProducto, Integer idVProducto,
+            String nombreVProducto, Integer idUsuario) {
         this.idProducto = idProducto;
+        this.idVProducto = idVProducto;
+        this.nombreVProducto = nombreVProducto;        
         this.idUsuario = idUsuario;
     }
 
