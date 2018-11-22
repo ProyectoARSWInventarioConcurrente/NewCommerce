@@ -71,5 +71,4 @@ public class ProductAPIController {
             return new ResponseEntity<>("No se ha podido retornar las variedades", HttpStatus.NOT_FOUND);
         }
     }
-
 }

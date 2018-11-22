@@ -6,6 +6,8 @@
 package edu.eci.arsw.commerce.model;
 
 import java.util.Date;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Field;
 
 /**
  * Tipo de producto el cual pertenece a un producto, por ejemplo, manzana verde,
@@ -13,15 +15,17 @@ import java.util.Date;
  *
  * @author camilolopez
  */
-public class VariedadProducto extends Producto {
+public class VariedadProducto{
+
+    @Id
+    private Integer idVProducto;
 
     private Integer precioProducto;
     private Date fabricacionProducto;
     private Date caducidadProducto;
     private String nombreVProducto;
-    private Integer idVProducto;
-    private Double descuentoPrecioProducto;
     private Integer idProducto;
+    private Double descuentoPrecioProducto;
     private Integer idUsuario;
 
     /**
@@ -38,7 +42,6 @@ public class VariedadProducto extends Producto {
     public VariedadProducto(String nombreProducto, Integer idProducto,
             String categoriaProducto, Integer idVProducto, String nombreVProducto,
             Integer idUsuario) {
-        super(nombreProducto, idProducto, categoriaProducto);
         this.idVProducto = idVProducto;
         this.nombreVProducto = nombreVProducto;
         this.idProducto = idProducto;

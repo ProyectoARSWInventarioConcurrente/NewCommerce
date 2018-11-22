@@ -5,6 +5,10 @@
  */
 package edu.eci.arsw.commerce;
 
+import edu.eci.arsw.commerce.model.Producto;
+import edu.eci.arsw.commerce.model.ProductoRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -15,11 +19,12 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class CommerceAPIDemoApplication{
 
+    //@Autowired
+    //private ProductoRepository pRepository;
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
         SpringApplication.run(CommerceAPIDemoApplication.class, args);
     }
-    
 }

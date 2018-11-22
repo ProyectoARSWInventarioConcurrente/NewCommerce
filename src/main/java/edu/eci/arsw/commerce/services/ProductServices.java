@@ -18,16 +18,6 @@ import java.util.List;
 public interface ProductServices {
 
     /**
-     * Calcula el precio del producto dado su precio dado por el usuario y el
-     * descuento que el usuario quiera aplicar sobre el
-     *
-     * @param idProducto Id del producto el cual sera calculado el precio
-     * @return Retorna el precio calculado del producto
-     * @throws com.arsw.project.commerce.services.ProductServicesException
-     */
-    public Double calcularPrecioProductoPorId(Integer idProducto) throws ProductServicesException;
-
-    /**
      * Crear un nuevo producto dado sus atributos
      *
      * @param nombreProducto Nombre que tendra el producto
@@ -60,7 +50,7 @@ public interface ProductServices {
      * @return La variedad del producto
      * @throws com.arsw.project.commerce.services.ProductServicesException
      */
-    public Producto obtenerVariedadProductoPorId(Integer idProducto) throws ProductServicesException;
+    public VariedadProducto obtenerVariedadProductoPorId(Integer idProducto) throws ProductServicesException;
 
     /**
      * Obtiene todos los productos que han sido registrados
@@ -84,7 +74,7 @@ public interface ProductServices {
      * @return Lista con las variedades
      * @throws com.arsw.project.commerce.services.ProductServicesException
      */
-    public List<Producto> obtenerTodaLaVariedadDeProductosPorIdProducto(Integer idProducto) throws ProductServicesException;
+    public List<VariedadProducto> obtenerTodaLaVariedadDeProductosPorIdProducto(Integer idProducto) throws ProductServicesException;
 
     /**
      * Obtener la lista de variedades de productos los cuales pertenecen a un

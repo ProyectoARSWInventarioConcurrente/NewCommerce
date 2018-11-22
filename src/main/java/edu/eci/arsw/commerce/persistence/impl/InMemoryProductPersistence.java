@@ -6,59 +6,52 @@
 package edu.eci.arsw.commerce.persistence.impl;
 
 import edu.eci.arsw.commerce.model.Producto;
+import edu.eci.arsw.commerce.model.ProductoRepository;
 import edu.eci.arsw.commerce.model.VariedadProducto;
+import edu.eci.arsw.commerce.model.VariedadProductoRepository;
 import edu.eci.arsw.commerce.persistence.ProductPersistence;
 import edu.eci.arsw.commerce.services.ProductServicesException;
 import java.util.ArrayList;
 import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 /**
  *
  * @author camilo
  */
+@Service
 public class InMemoryProductPersistence implements ProductPersistence {
 
-    private List<Producto> listaProductos = new ArrayList<>();
-    private List<VariedadProducto> listaVariedadProductos = new ArrayList<>();
+    @Autowired
+    ProductoRepository pRepository;
+
+    @Autowired
+    VariedadProductoRepository vpRepository;
 
     public InMemoryProductPersistence() {
-        Producto pr1 = new Producto("Manzana", 100500, "Fruta") {
-        };
-        Producto pr2 = new Producto("Papa", 100501, "Lugubre") {
-        };
-        VariedadProducto vpr1 = new VariedadProducto("Manzana", 100500,
-                "Fruta", 200500, "Manzana verde", 20500);
-        VariedadProducto vpr2 = new VariedadProducto("Papa", 100501,
-                "Lugubre", 200501, "Papa pastusa", 20500);
-        listaProductos.add(pr1);
-        listaProductos.add(pr2);
-        listaVariedadProductos.add(vpr1);
-        listaVariedadProductos.add(vpr2);
-    }
-
-    @Override
-    public Double calcularPrecioProductoPorId(Integer idProducto) throws ProductServicesException {
-        Double precioARetornar = 0.0;
-        try {
-            for (VariedadProducto x : listaVariedadProductos) {
-                if (x.getIdVProducto().equals(idProducto)) {
-                    precioARetornar = x.getPrecioProducto()
-                            - x.getPrecioProducto() * x.getDescuentoPrecioProducto();
-                }
-            }
-            return precioARetornar;
-        } catch (Exception e) {
-            System.out.println("No se ha podido calcular el precio");
-            return precioARetornar;
-        }
     }
 
     @Override
     public void crearNuevoProducto(String nombreProducto, Integer idProducto, String categoriaProducto) throws ProductServicesException {
         try {
-            Producto nuevoProducto = new Producto(nombreProducto, idProducto, categoriaProducto) {
-            };
-            listaProductos.add(nuevoProducto);
+            Producto nuevoProducto = new Producto(nombreProducto, idProducto, categoriaProducto);
+
+            Boolean existeProducto = false;
+            List<Producto> listaProductos = new ArrayList<>();
+            listaProductos = pRepository.findAll();
+
+            for (Producto xProducto : listaProductos) {
+                if ((xProducto.getIdProducto()).equals(idProducto)) {
+                    existeProducto = true;
+                }
+            }
+
+            if (!existeProducto) {
+                pRepository.save(nuevoProducto);
+            } else {
+                System.out.println("Este producto ya existe");
+            }
         } catch (Exception e) {
             System.out.println("No se ha podido crear el producto");
         }
@@ -67,35 +60,48 @@ public class InMemoryProductPersistence implements ProductPersistence {
     @Override
     public void crearNuevaVariedadDeProducto(String nombreProducto, Integer idProducto, String categoriaProducto, Integer idVProducto,
             String nombreVProducto, Integer idUsuario) throws ProductServicesException {
-        for (Producto x : listaProductos) {
-            if (!x.getNombreProducto().equals(nombreProducto)) {
-                crearNuevoProducto(nombreProducto, idProducto, categoriaProducto);
-            }
-        }
         try {
-            VariedadProducto nuevaVariedadProducto
-                    = new VariedadProducto(nombreProducto, idProducto, categoriaProducto, idVProducto,
-                            nombreVProducto, idUsuario);
-            listaVariedadProductos.add(nuevaVariedadProducto);
+            VariedadProducto nuevaVariedadProducto = new VariedadProducto(nombreProducto, idProducto, categoriaProducto,
+                    idVProducto, nombreVProducto, idUsuario);
+
+            Boolean existeVProducto = false;
+            List<VariedadProducto> listaVariedadProductos = new ArrayList<>();
+            listaVariedadProductos = vpRepository.findAll();
+
+            for (VariedadProducto vProducto : listaVariedadProductos) {
+                if ((vProducto.getIdProducto()).equals(idProducto)) {
+                    existeVProducto = true;
+                }
+            }
+
+            if (!existeVProducto) {
+                vpRepository.save(nuevaVariedadProducto);
+            } else {
+                System.out.println("La variedad de producto ya existe");
+            }
+
         } catch (Exception e) {
             System.out.println("No se ha podido crear la variedad del producto");
         }
     }
 
     @Override
-    public Producto obtenerVariedadProductoPorId(Integer idProducto) throws ProductServicesException {
-        Producto productoARetornar = null;
-        for (VariedadProducto x : listaVariedadProductos) {
-            if (x.getIdVProducto().equals(idProducto)) {
-                productoARetornar = x;
+    public VariedadProducto obtenerVariedadProductoPorId(Integer idVariedadProducto) throws ProductServicesException {
+        VariedadProducto variedadProductoARetornar = null;
+        List<VariedadProducto> listaVariedadProducto = vpRepository.findAll();
+        for (VariedadProducto x : listaVariedadProducto) {
+            if (x.getIdVProducto().equals(idVariedadProducto)) {
+                variedadProductoARetornar = x;
             }
         }
-        return productoARetornar;
+        return variedadProductoARetornar;
     }
 
     @Override
     public List<Producto> obtenerTodosLosProductos() throws ProductServicesException {
+        List<Producto> listaProductos = new ArrayList<>();
         try {
+            listaProductos = pRepository.findAll();
             return listaProductos;
         } catch (Exception e) {
             System.out.println("No se han podido obtener los productos");
@@ -105,7 +111,9 @@ public class InMemoryProductPersistence implements ProductPersistence {
 
     @Override
     public List<VariedadProducto> obtenerTodasLasVariedades() {
+        List<VariedadProducto> listaVariedadProductos = new ArrayList<>();
         try {
+            listaVariedadProductos = vpRepository.findAll();
             return listaVariedadProductos;
         } catch (Exception e) {
             System.out.println("No se han podido retornar las variedades");
@@ -114,14 +122,9 @@ public class InMemoryProductPersistence implements ProductPersistence {
     }
 
     @Override
-    public List<Producto> obtenerTodaLaVariedadDeProductosPorIdProducto(Integer idProducto) throws ProductServicesException {
-        List<Producto> listaARetornar = new ArrayList<>();
+    public List<VariedadProducto> obtenerTodaLaVariedadDeProductosPorIdProducto(Integer idProducto) throws ProductServicesException {
+        List<VariedadProducto> listaARetornar = vpRepository.findByidProducto(idProducto);
         try {
-            for (VariedadProducto vProducto : listaVariedadProductos) {
-                if (vProducto.getIdProducto().equals(idProducto)) {
-                    listaARetornar.add(vProducto);
-                }
-            }
             return listaARetornar;
         } catch (Exception e) {
             System.out.println("No se han podido obtener las variedades del producto");
@@ -131,13 +134,8 @@ public class InMemoryProductPersistence implements ProductPersistence {
 
     @Override
     public List<VariedadProducto> obtenerVariedadDeProductosPorIdDeUsuario(Integer idUsuario) {
-        List<VariedadProducto> listaVariedades = new ArrayList<>();
+        List<VariedadProducto> listaVariedades = vpRepository.findByidProducto(idUsuario);
         try {
-            for (VariedadProducto x : listaVariedadProductos) {
-                if (x.getIdUsuario().equals(idUsuario)) {
-                    listaVariedades.add(x);
-                }
-            }
             return listaVariedades;
         } catch (Exception e) {
             System.out.println("No se han podido obtener las variedades");

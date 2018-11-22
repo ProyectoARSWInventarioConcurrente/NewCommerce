@@ -18,14 +18,6 @@ public interface ProductPersistence {
     
     /**
      *
-     * @param idProducto
-     * @return
-     * @throws ProductServicesException
-     */
-    public Double calcularPrecioProductoPorId(Integer idProducto) throws ProductServicesException;
-    
-    /**
-     *
      * @param nombreProducto
      * @param idProducto
      * @param categoriaProducto
@@ -54,7 +46,7 @@ public interface ProductPersistence {
      * @return
      * @throws ProductServicesException
      */
-    public Producto obtenerVariedadProductoPorId(Integer idProducto) throws ProductServicesException;
+    public VariedadProducto obtenerVariedadProductoPorId(Integer idProducto) throws ProductServicesException;
     
     /**
      *
@@ -75,7 +67,7 @@ public interface ProductPersistence {
      * @return
      * @throws ProductServicesException
      */
-    public List<Producto> obtenerTodaLaVariedadDeProductosPorIdProducto(Integer idProducto) throws ProductServicesException;
+    public List<VariedadProducto> obtenerTodaLaVariedadDeProductosPorIdProducto(Integer idProducto) throws ProductServicesException;
     
     /**
      *

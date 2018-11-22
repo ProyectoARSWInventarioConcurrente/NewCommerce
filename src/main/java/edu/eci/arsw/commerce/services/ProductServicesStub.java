@@ -34,12 +34,7 @@ public class ProductServicesStub implements ProductServices {
     }
 
     @Override
-    public Double calcularPrecioProductoPorId(Integer idProducto) throws ProductServicesException {
-        return pPersistence.calcularPrecioProductoPorId(idProducto);
-    }
-
-    @Override
-    public Producto obtenerVariedadProductoPorId(Integer idProducto) throws ProductServicesException {
+    public VariedadProducto obtenerVariedadProductoPorId(Integer idProducto) throws ProductServicesException {
         return pPersistence.obtenerVariedadProductoPorId(idProducto);
     }
 
@@ -49,7 +44,7 @@ public class ProductServicesStub implements ProductServices {
     }
 
     @Override
-    public List<Producto> obtenerTodaLaVariedadDeProductosPorIdProducto(Integer idProducto) throws ProductServicesException {
+    public List<VariedadProducto> obtenerTodaLaVariedadDeProductosPorIdProducto(Integer idProducto) throws ProductServicesException {
         return pPersistence.obtenerTodaLaVariedadDeProductosPorIdProducto(idProducto);
     }
 
