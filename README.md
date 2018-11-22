@@ -4,3 +4,12 @@
 - Camilo Lopez
 - Juan Villate
 - Oscar Alba
+
+## Documento de arquitectura
+
+### Introduccion
+### Conceptos generales
+### Implementacion
+### Pruebas
+### Graficas
+### Conclusiones
