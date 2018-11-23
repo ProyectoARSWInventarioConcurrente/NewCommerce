@@ -237,4 +237,39 @@ public class ProductAPIController {
             return new ResponseEntity<>("No se ha podido añadir la variedad de producto", HttpStatus.FORBIDDEN);
         }
     }
+
+    /**
+     * Este metodo se encarga de eliminar un producto mediante su id
+     *
+     * @param idProducto El id del producto el cual sera eliminado
+     * @return
+     */
+    @RequestMapping(method = RequestMethod.DELETE, path = {"eliminarProducto/{idProdcuto}"})
+    public ResponseEntity<?> eliminarProductoPorId(@PathVariable("idProducto") Integer idProducto) {
+        try {
+            prServices.eliminarUnProductoPorId(idProducto);
+
+            return new ResponseEntity<>(HttpStatus.ACCEPTED);
+        } catch (Exception ex) {
+            Logger.getLogger(ProductAPIController.class.getName()).log(Level.SEVERE, null, ex);
+            return new ResponseEntity<>("No se ha podido eliminar el producto con el id " + idProducto, HttpStatus.FORBIDDEN);
+        }
+    }
+
+    /**
+     * Este metodo se encarga de eliminar una variedad de producto por su id
+     * @param idVProducto El id de la variedad de producto
+     * @return
+     */
+    @RequestMapping(method = RequestMethod.DELETE, path = {"eliminarVProducto/{idVProducto}"})
+    public ResponseEntity<?> eliminarVariedadProductoPorId(@PathVariable("idVProducto") Integer idVProducto) {
+        try {
+            prServices.eliminarUnaVariedadDeProductoPorId(idVProducto);
+
+            return new ResponseEntity<>(HttpStatus.ACCEPTED);
+        } catch (Exception ex) {
+            Logger.getLogger(ProductAPIController.class.getName()).log(Level.SEVERE, null, ex);
+            return new ResponseEntity<>("No se ha podido eliminar la variedad de producto con el id " + idVProducto, HttpStatus.FORBIDDEN);
+        }
+    }
 }
