@@ -69,4 +69,14 @@ public class ProductServicesStub implements ProductServices {
         return pPersistence.obtenerTodasLasVariedades();
     }
 
+    @Override
+    public void eliminarUnProductoPorId(Integer idPorducto) {
+        pPersistence.eliminarUnProductoPorId(idPorducto);
+    }
+
+    @Override
+    public void eliminarUnaVariedadDeProductoPorId(Integer idVProducto) {
+        pPersistence.eliminarUnaVariedadDeProductoPorId(idVProducto);
+    }
+
 }

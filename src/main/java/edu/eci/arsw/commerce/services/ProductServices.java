@@ -58,9 +58,10 @@ public interface ProductServices {
      * @throws com.arsw.project.commerce.services.ProductServicesException
      */
     public List<Producto> obtenerTodosLosProductos() throws ProductServicesException;
-    
+
     /**
      * Obtiene todas las variedades que han sido registradas
+     *
      * @return Lista con todas las variedades
      */
     public List<VariedadProducto> obtenerTodasLasVariedades();
@@ -83,4 +84,18 @@ public interface ProductServices {
      * @return Lista con las variedades del usuario
      */
     public List<VariedadProducto> obtenerVariedadDeProductosPorIdDeUsuario(Integer idUsuario);
+
+    /**
+     * Esta funcion se encarga de eliminar un producto mediante su Id
+     *
+     * @param idPorducto El id del producto a ser eliminado
+     */
+    public void eliminarUnProductoPorId(Integer idPorducto);
+
+    /**
+     * Esta funcion se encarga de borrar una variedad de producto mediante su Id
+     *
+     * @param idVProducto El id de la variedad del producto
+     */
+    public void eliminarUnaVariedadDeProductoPorId(Integer idVProducto);
 }

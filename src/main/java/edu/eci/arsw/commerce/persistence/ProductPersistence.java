@@ -15,7 +15,7 @@ import java.util.List;
  * @author camilo
  */
 public interface ProductPersistence {
-    
+
     /**
      *
      * @param nombreProducto
@@ -46,20 +46,19 @@ public interface ProductPersistence {
      * @throws ProductServicesException
      */
     public VariedadProducto obtenerVariedadProductoPorId(Integer idProducto) throws ProductServicesException;
-    
+
     /**
      *
-     * @return
-     * @throws ProductServicesException
+     * @return @throws ProductServicesException
      */
     public List<Producto> obtenerTodosLosProductos() throws ProductServicesException;
-    
+
     /**
      *
      * @return
      */
     public List<VariedadProducto> obtenerTodasLasVariedades();
-    
+
     /**
      *
      * @param idProducto
@@ -67,12 +66,26 @@ public interface ProductPersistence {
      * @throws ProductServicesException
      */
     public List<VariedadProducto> obtenerTodaLaVariedadDeProductosPorIdProducto(Integer idProducto) throws ProductServicesException;
-    
+
     /**
      *
      * @param idUsuario
      * @return
      */
     public List<VariedadProducto> obtenerVariedadDeProductosPorIdDeUsuario(Integer idUsuario);
-    
+
+    /**
+     * Esta funcion se encarga de eliminar un producto mediante su Id
+     *
+     * @param idPorducto El id del producto a ser eliminado
+     */
+    public void eliminarUnProductoPorId(Integer idPorducto);
+
+    /**
+     * Esta funcion se encarga de borrar una variedad de producto mediante su Id
+     *
+     * @param idVProducto El id de la variedad del producto
+     */
+    public void eliminarUnaVariedadDeProductoPorId(Integer idVProducto);
+
 }

@@ -143,4 +143,24 @@ public class InMemoryProductPersistence implements ProductPersistence {
         }
     }
 
+    @Override
+    public void eliminarUnProductoPorId(Integer idProducto) {
+        try {
+            Producto productoAEliminar = pRepository.findByidProducto(idProducto);
+            pRepository.delete(productoAEliminar);
+        } catch (Exception ex) {
+            System.out.println("Error al tratar de eliminar el producto con id: " + idProducto);
+        }
+    }
+
+    @Override
+    public void eliminarUnaVariedadDeProductoPorId(Integer idVProducto) {
+        try {
+            VariedadProducto vProductoAEliminar = vpRepository.findByidVProducto(idVProducto);
+            vpRepository.delete(vProductoAEliminar);
+        } catch (Exception ex) {
+            System.out.println("Error al tratar de eliminar la variedad de producto con id: " + idVProducto);
+        }
+    }
+
 }
