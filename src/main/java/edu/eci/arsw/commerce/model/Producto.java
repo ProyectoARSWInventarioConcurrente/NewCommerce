@@ -5,15 +5,20 @@
  */
 package edu.eci.arsw.commerce.model;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Field;
+
 /**
  * Producto el cual es creado por un cliente, por ejemplo, papa, arroz, manzana
  *
  * @author camilolopez
  */
-public abstract class Producto {
+public class Producto {
+
+    @Id
+    private Integer idProducto;
 
     private String nombreProducto;
-    private Integer idProducto;
     private String categoriaProducto;
 
     /**
