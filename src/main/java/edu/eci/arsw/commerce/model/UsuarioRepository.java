@@ -11,6 +11,14 @@ import org.springframework.data.mongodb.repository.MongoRepository;
  *
  * @author camilo
  */
-public interface UsuarioRepository extends MongoRepository<Usuario, String>{
-    
+public interface UsuarioRepository extends MongoRepository<Usuario, String> {
+
+    /**
+     * Este metodo obtiene un usuario desde la base de datos mediante su cedula
+     *
+     * @param cedulaUsuario
+     * @return
+     */
+    public Usuario findByCedulaUsuario(Integer cedulaUsuario);
+
 }
