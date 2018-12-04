@@ -6,6 +6,7 @@
 package edu.eci.arsw.commerce.persistence;
 
 import edu.eci.arsw.commerce.model.Usuario;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -23,10 +24,11 @@ public interface UsuarioPersistence {
      * @param direccionUsuario Direccion del usuario
      * @param telefonoUsuario Telefono del usuario
      * @param fechaNacimiento Fecha de nacimiento del usuario
+     * @param correoElectronico
      */
     public void crearUnNuevoUsuario(Integer cedulaUsuario, String nombreUsuario,
             String apellidoUsuario, String direccionUsuario, Integer telefonoUsuario,
-            String fechaNacimiento);
+            Date fechaNacimiento, String correoElectronico);
 
     /**
      * Este metodo permite obtener un usuario por su cedula

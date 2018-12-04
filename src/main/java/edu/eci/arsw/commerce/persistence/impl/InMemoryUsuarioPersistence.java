@@ -9,6 +9,7 @@ import edu.eci.arsw.commerce.model.Usuario;
 import edu.eci.arsw.commerce.model.UsuarioRepository;
 import edu.eci.arsw.commerce.persistence.UsuarioPersistence;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,10 +26,10 @@ public class InMemoryUsuarioPersistence implements UsuarioPersistence {
 
     @Override
     public void crearUnNuevoUsuario(Integer cedulaUsuario, String nombreUsuario, String apellidoUsuario,
-            String direccionUsuario, Integer telefonoUsuario, String fechaNacimiento) {
+            String direccionUsuario, Integer telefonoUsuario, Date fechaNacimiento, String correoElectronico) {
         try {            
             Usuario nuevoUsuario = new Usuario(cedulaUsuario, nombreUsuario, apellidoUsuario,
-                    direccionUsuario, telefonoUsuario, fechaNacimiento);
+                    direccionUsuario, telefonoUsuario, fechaNacimiento, correoElectronico);
 
             Boolean existeUsuario = false;
             List<Usuario> listaUsuario = new ArrayList<>();

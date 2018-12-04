@@ -5,6 +5,7 @@
  */
 package edu.eci.arsw.commerce.model;
 
+import java.util.Date;
 import org.springframework.data.annotation.Id;
 
 /**
@@ -12,23 +13,31 @@ import org.springframework.data.annotation.Id;
  * @author camilo
  */
 public class Usuario {
-    
+
     @Id
     Integer cedulaUsuario;
-    
+
     String nombreUsuario;
     String apellidoUsuario;
     String direccionUsuario;
     Integer telefonoUsuario;
-    String fechaNacimiento;
+    Date fechaNacimiento;
+    String correoElectronico;
+    Integer calificacionUsuario;
+    Double saldoUsuario;
 
-    public Usuario(Integer cedulaUsuario, String nombreUsuario, String apellidoUsuario, String direccionUsuario, Integer telefonoUsuario, String fechaNacimiento) {
+    public Usuario(Integer cedulaUsuario, String nombreUsuario, String apellidoUsuario, String direccionUsuario,
+            Integer telefonoUsuario, Date fechaNacimiento, String correoElectronico) {
         this.cedulaUsuario = cedulaUsuario;
         this.nombreUsuario = nombreUsuario;
         this.apellidoUsuario = apellidoUsuario;
         this.direccionUsuario = direccionUsuario;
         this.telefonoUsuario = telefonoUsuario;
         this.fechaNacimiento = fechaNacimiento;
+        this.correoElectronico = correoElectronico;
+
+        calificacionUsuario = 1;
+        saldoUsuario = 0.0;
     }
 
     public Integer getCedulaUsuario() {
@@ -71,14 +80,36 @@ public class Usuario {
         this.telefonoUsuario = telefonoUsuario;
     }
 
-    public String getFechaNacimiento() {
+    public Date getFechaNacimiento() {
         return fechaNacimiento;
     }
 
-    public void setFechaNacimiento(String fechaNacimiento) {
+    public void setFechaNacimiento(Date fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
     }
-    
-    
-    
+
+    public String getCorreoElectronico() {
+        return correoElectronico;
+    }
+
+    public void setCorreoElectronico(String correoElectronico) {
+        this.correoElectronico = correoElectronico;
+    }
+
+    public Integer getCalificacionUsuario() {
+        return calificacionUsuario;
+    }
+
+    public void setCalificacionUsuario(Integer calificacionUsuario) {
+        this.calificacionUsuario = calificacionUsuario;
+    }
+
+    public Double getSaldoUsuario() {
+        return saldoUsuario;
+    }
+
+    public void setSaldoUsuario(Double saldoUsuario) {
+        this.saldoUsuario = saldoUsuario;
+    }
+
 }
