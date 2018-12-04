@@ -5,6 +5,7 @@
  */
 package edu.eci.arsw.commerce.model;
 
+import java.util.Date;
 import org.springframework.data.annotation.Id;
 
 /**
@@ -20,13 +21,13 @@ public class Usuario {
     String apellidoUsuario;
     String direccionUsuario;
     Integer telefonoUsuario;
-    String fechaNacimiento;
+    Date fechaNacimiento;
     String correoElectronico;
     Integer calificacionUsuario;
     Double saldoUsuario;
 
     public Usuario(Integer cedulaUsuario, String nombreUsuario, String apellidoUsuario, String direccionUsuario,
-            Integer telefonoUsuario, String fechaNacimiento, String correoElectronico) {
+            Integer telefonoUsuario, Date fechaNacimiento, String correoElectronico) {
         this.cedulaUsuario = cedulaUsuario;
         this.nombreUsuario = nombreUsuario;
         this.apellidoUsuario = apellidoUsuario;
@@ -79,11 +80,11 @@ public class Usuario {
         this.telefonoUsuario = telefonoUsuario;
     }
 
-    public String getFechaNacimiento() {
+    public Date getFechaNacimiento() {
         return fechaNacimiento;
     }
 
-    public void setFechaNacimiento(String fechaNacimiento) {
+    public void setFechaNacimiento(Date fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
     }
 

@@ -7,6 +7,7 @@ package edu.eci.arsw.commerce.services;
 
 import edu.eci.arsw.commerce.model.Usuario;
 import edu.eci.arsw.commerce.persistence.UsuarioPersistence;
+import java.util.Date;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,9 +24,9 @@ public class UsuarioServicesStub implements UsuarioServices {
 
     @Override
     public void crearUnNuevoUsuario(Integer cedulaUsuario, String nombreUsuario, String apellidoUsuario,
-            String direccionUsuario, Integer telefonoUsuario, String fechaNacimiento) {
+            String direccionUsuario, Integer telefonoUsuario, Date fechaNacimiento, String correoElectronico) {
         uPersistence.crearUnNuevoUsuario(cedulaUsuario, nombreUsuario, apellidoUsuario,
-                direccionUsuario, telefonoUsuario, fechaNacimiento);
+                direccionUsuario, telefonoUsuario, fechaNacimiento, correoElectronico);
     }
 
     @Override
