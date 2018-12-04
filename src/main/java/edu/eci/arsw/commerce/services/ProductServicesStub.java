@@ -24,13 +24,13 @@ public class ProductServicesStub implements ProductServices {
 
     @Autowired
     ProductPersistence pPersistence;
-    
+
     /**
      * En este constructor se crean productos y variedades de productos para
      * pruebas futuras
      */
     public ProductServicesStub() {
-        
+
     }
 
     @Override

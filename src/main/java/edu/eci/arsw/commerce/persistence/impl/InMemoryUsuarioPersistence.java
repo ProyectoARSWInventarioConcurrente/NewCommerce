@@ -27,7 +27,7 @@ public class InMemoryUsuarioPersistence implements UsuarioPersistence {
     @Override
     public void crearUnNuevoUsuario(Integer cedulaUsuario, String nombreUsuario, String apellidoUsuario,
             String direccionUsuario, Integer telefonoUsuario, Date fechaNacimiento, String correoElectronico) {
-        try {            
+        try {
             Usuario nuevoUsuario = new Usuario(cedulaUsuario, nombreUsuario, apellidoUsuario,
                     direccionUsuario, telefonoUsuario, fechaNacimiento, correoElectronico);
 

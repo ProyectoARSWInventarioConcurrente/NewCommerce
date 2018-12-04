@@ -15,7 +15,7 @@ import org.springframework.data.mongodb.core.mapping.Field;
  *
  * @author camilolopez
  */
-public class VariedadProducto{
+public class VariedadProducto {
 
     @Id
     private Integer idVProducto;
@@ -43,7 +43,7 @@ public class VariedadProducto{
             String nombreVProducto, Integer idUsuario) {
         this.idProducto = idProducto;
         this.idVProducto = idVProducto;
-        this.nombreVProducto = nombreVProducto;        
+        this.nombreVProducto = nombreVProducto;
         this.idUsuario = idUsuario;
     }
 

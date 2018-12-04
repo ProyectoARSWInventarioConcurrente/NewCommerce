@@ -113,7 +113,7 @@ public class UsuarioAPIController {
             Object[] nameKeys = result.keySet().toArray();
 
             Usuario ur = result.get(nameKeys[0]);
-            
+
             uServices.crearUnNuevoUsuario(ur.getCedulaUsuario(), ur.getNombreUsuario(),
                     ur.getApellidoUsuario(), ur.getDireccionUsuario(), ur.getTelefonoUsuario(),
                     ur.getFechaNacimiento(), ur.getCorreoElectronico());
