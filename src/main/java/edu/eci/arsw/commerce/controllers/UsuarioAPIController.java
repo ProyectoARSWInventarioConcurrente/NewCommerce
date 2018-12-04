@@ -116,7 +116,7 @@ public class UsuarioAPIController {
             
             uServices.crearUnNuevoUsuario(ur.getCedulaUsuario(), ur.getNombreUsuario(),
                     ur.getApellidoUsuario(), ur.getDireccionUsuario(), ur.getTelefonoUsuario(),
-                    ur.getFechaNacimiento());
+                    ur.getFechaNacimiento(), ur.getCorreoElectronico());
 
             return new ResponseEntity<>(HttpStatus.CREATED);
         } catch (JsonSyntaxException ex) {
