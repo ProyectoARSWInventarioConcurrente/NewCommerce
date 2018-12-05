@@ -4,10 +4,4 @@
  * and open the template in the editor.
  */
 
-/**
- * Esta funcion añade cada uno de los productos que existen para la venta a la
- *  tabla inicial de compra para un usuario
- */
-function cargarProductos(){
-    
-}
+
