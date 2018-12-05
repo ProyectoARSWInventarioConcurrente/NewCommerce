@@ -26,10 +26,11 @@ public interface UsuarioServices {
      * @param telefonoUsuario Telefono del usuario
      * @param fechaNacimiento Fecha de nacimiento del usuario
      * @param correoElectronico
+     * @param contraseñaUsuario
      */
     public void crearUnNuevoUsuario(Integer cedulaUsuario, String nombreUsuario,
-            String apellidoUsuario, String direccionUsuario, Integer telefonoUsuario,
-            Date fechaNacimiento, String correoElectronico);
+            String apellidoUsuario, String direccionUsuario, Long telefonoUsuario,
+            Date fechaNacimiento, String correoElectronico, String contraseñaUsuario);
 
     /**
      * Este metodo permite obtener un usuario por su cedula

@@ -15,19 +15,21 @@ import org.springframework.data.annotation.Id;
 public class Usuario {
 
     @Id
-    Integer cedulaUsuario;
+    public String idUsuario;
 
-    String nombreUsuario;
-    String apellidoUsuario;
-    String direccionUsuario;
-    Integer telefonoUsuario;
-    Date fechaNacimiento;
-    String correoElectronico;
-    Integer calificacionUsuario;
-    Double saldoUsuario;
+    private Integer cedulaUsuario;
+    private String nombreUsuario;
+    private String apellidoUsuario;
+    private String direccionUsuario;
+    private Long telefonoUsuario;
+    private Date fechaNacimiento;
+    private String correoElectronico;
+    private Integer calificacionUsuario;
+    private Double saldoUsuario;
+    private String contraseñaUsuario;
 
     public Usuario(Integer cedulaUsuario, String nombreUsuario, String apellidoUsuario, String direccionUsuario,
-            Integer telefonoUsuario, Date fechaNacimiento, String correoElectronico) {
+            Long telefonoUsuario, Date fechaNacimiento, String correoElectronico, String contraseñaUsuario) {
         this.cedulaUsuario = cedulaUsuario;
         this.nombreUsuario = nombreUsuario;
         this.apellidoUsuario = apellidoUsuario;
@@ -35,6 +37,7 @@ public class Usuario {
         this.telefonoUsuario = telefonoUsuario;
         this.fechaNacimiento = fechaNacimiento;
         this.correoElectronico = correoElectronico;
+        this.contraseñaUsuario = contraseñaUsuario;
 
         calificacionUsuario = 1;
         saldoUsuario = 0.0;
@@ -72,11 +75,11 @@ public class Usuario {
         this.direccionUsuario = direccionUsuario;
     }
 
-    public Integer getTelefonoUsuario() {
+    public Long getTelefonoUsuario() {
         return telefonoUsuario;
     }
 
-    public void setTelefonoUsuario(Integer telefonoUsuario) {
+    public void setTelefonoUsuario(Long telefonoUsuario) {
         this.telefonoUsuario = telefonoUsuario;
     }
 
@@ -110,6 +113,14 @@ public class Usuario {
 
     public void setSaldoUsuario(Double saldoUsuario) {
         this.saldoUsuario = saldoUsuario;
+    }
+
+    public String getContraseñaUsuario() {
+        return contraseñaUsuario;
+    }
+
+    public void setContraseñaUsuario(String contraseñaUsuario) {
+        this.contraseñaUsuario = contraseñaUsuario;
     }
 
 }

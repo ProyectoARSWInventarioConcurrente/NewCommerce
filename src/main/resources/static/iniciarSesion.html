@@ -32,7 +32,7 @@
             <h1 class="display-4" id="regTitle">¿Tienes una cuenta? ¡Inicia sesion!</h1>
             <p class="lead" id="regPhrase">Ingresa al mejor inventarion concurrente del momento</p>
         </div>
-        <form onsubmit="registrarUsuario()" id="regForm">
+        <form onsubmit="iniciarSesion(); return false" id="regForm">
             <div style="display: flex; justify-content: center; align-items: center;">
                 <div class="input-group mb-3 " style="width: 30%">
                     <div class="input-group-prepend">
@@ -46,7 +46,7 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="basic-addon3" >Contraseña</span>
                     </div>
-                    <input type="password" required class="form-control" id="inNombre" aria-describedby="basic-addon3">
+                    <input type="password" required class="form-control" id="inContraseña" aria-describedby="basic-addon3">
                 </div>
             </div>
             <div style="display: flex; justify-content: center; align-items: center;">

@@ -103,7 +103,7 @@ public class UsuarioAPIController {
     @RequestMapping(method = RequestMethod.POST, path = "registrarUsuario")
     public ResponseEntity<?> crearNuevoUsuario(@RequestBody String usuario) {
         try {
-
+            System.out.println(usuario);
             //Pasar el String JSON a un Map
             Type listType = new TypeToken<Map<Integer, Usuario>>() {
             }.getType();
@@ -116,10 +116,10 @@ public class UsuarioAPIController {
 
             uServices.crearUnNuevoUsuario(ur.getCedulaUsuario(), ur.getNombreUsuario(),
                     ur.getApellidoUsuario(), ur.getDireccionUsuario(), ur.getTelefonoUsuario(),
-                    ur.getFechaNacimiento(), ur.getCorreoElectronico());
+                    ur.getFechaNacimiento(), ur.getCorreoElectronico(), ur.getContraseñaUsuario());
 
             return new ResponseEntity<>(HttpStatus.CREATED);
-        } catch (JsonSyntaxException ex) {
+        } catch (Exception ex) {
             Logger.getLogger(ProductAPIController.class.getName()).log(Level.SEVERE, null, ex);
             return new ResponseEntity<>("No se ha podido registrar el usuario", HttpStatus.FORBIDDEN);
         }

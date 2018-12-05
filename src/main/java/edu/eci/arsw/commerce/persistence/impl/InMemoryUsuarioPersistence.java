@@ -26,10 +26,11 @@ public class InMemoryUsuarioPersistence implements UsuarioPersistence {
 
     @Override
     public void crearUnNuevoUsuario(Integer cedulaUsuario, String nombreUsuario, String apellidoUsuario,
-            String direccionUsuario, Integer telefonoUsuario, Date fechaNacimiento, String correoElectronico) {
+            String direccionUsuario, Long telefonoUsuario, Date fechaNacimiento,
+            String correoElectronico, String contraseñaUsuario) {
         try {
             Usuario nuevoUsuario = new Usuario(cedulaUsuario, nombreUsuario, apellidoUsuario,
-                    direccionUsuario, telefonoUsuario, fechaNacimiento, correoElectronico);
+                    direccionUsuario, telefonoUsuario, fechaNacimiento, correoElectronico, contraseñaUsuario);
 
             Boolean existeUsuario = false;
             List<Usuario> listaUsuario = new ArrayList<>();
