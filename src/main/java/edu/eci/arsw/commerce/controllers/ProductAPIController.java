@@ -198,7 +198,7 @@ public class ProductAPIController {
 
             Producto pr = result.get(nameKeys[0]);
 
-            prServices.crearNuevoProducto(pr.getNombreProducto(), pr.getIdProducto(), pr.getCategoriaProducto());
+            prServices.crearNuevoProducto(pr.getNombreProducto(), pr.getCategoriaProducto());
 
             return new ResponseEntity<>(HttpStatus.CREATED);
         } catch (Exception ex) {

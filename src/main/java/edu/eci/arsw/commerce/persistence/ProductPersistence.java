@@ -23,8 +23,8 @@ public interface ProductPersistence {
      * @param categoriaProducto
      * @throws ProductServicesException
      */
-    public void crearNuevoProducto(String nombreProducto, Integer idProducto,
-            String categoriaProducto) throws ProductServicesException;
+    public void crearNuevoProducto(String nombreProducto, String categoriaProducto)
+            throws ProductServicesException;
 
     /**
      *

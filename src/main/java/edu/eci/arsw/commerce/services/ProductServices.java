@@ -25,8 +25,8 @@ public interface ProductServices {
      * @param categoriaProducto Categoria a la cual pertencera el producto
      * @throws com.arsw.project.commerce.services.ProductServicesException
      */
-    public void crearNuevoProducto(String nombreProducto, Integer idProducto,
-            String categoriaProducto) throws ProductServicesException;
+    public void crearNuevoProducto(String nombreProducto, String categoriaProducto)
+            throws ProductServicesException;
 
     /**
      * Crear una nueva variedad de producto dado sus atributos que lo componen

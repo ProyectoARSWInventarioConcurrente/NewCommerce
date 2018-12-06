@@ -16,7 +16,7 @@ import org.springframework.data.mongodb.core.mapping.Field;
 public class Producto {
 
     @Id
-    private Integer idProducto;
+    private String idProducto;
 
     private String nombreProducto;
     private String categoriaProducto;
@@ -28,10 +28,8 @@ public class Producto {
      * @param idProducto Id del producto
      * @param categoriaProducto Categoria a la cual pertenece el producto
      */
-    public Producto(String nombreProducto, Integer idProducto,
-            String categoriaProducto) {
+    public Producto(String nombreProducto, String categoriaProducto) {
         this.nombreProducto = nombreProducto;
-        this.idProducto = idProducto;
         this.categoriaProducto = categoriaProducto;
     }
 
@@ -43,11 +41,11 @@ public class Producto {
         this.nombreProducto = nombreProducto;
     }
 
-    public Integer getIdProducto() {
+    public String getIdProducto() {
         return idProducto;
     }
 
-    public void setIdProducto(Integer idProducto) {
+    public void setIdProducto(String idProducto) {
         this.idProducto = idProducto;
     }
 

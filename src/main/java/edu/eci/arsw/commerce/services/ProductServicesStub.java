@@ -49,8 +49,8 @@ public class ProductServicesStub implements ProductServices {
     }
 
     @Override
-    public void crearNuevoProducto(String nombreProducto, Integer idProducto, String categoriaProducto) throws ProductServicesException {
-        pPersistence.crearNuevoProducto(nombreProducto, idProducto, categoriaProducto);
+    public void crearNuevoProducto(String nombreProducto, String categoriaProducto) throws ProductServicesException {
+        pPersistence.crearNuevoProducto(nombreProducto, categoriaProducto);
     }
 
     @Override

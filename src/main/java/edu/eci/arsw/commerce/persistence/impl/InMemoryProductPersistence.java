@@ -33,25 +33,11 @@ public class InMemoryProductPersistence implements ProductPersistence {
     }
 
     @Override
-    public void crearNuevoProducto(String nombreProducto, Integer idProducto, String categoriaProducto) throws ProductServicesException {
+    public void crearNuevoProducto(String nombreProducto, String categoriaProducto) throws ProductServicesException {
         try {
-            Producto nuevoProducto = new Producto(nombreProducto, idProducto, categoriaProducto);
+            Producto nuevoProducto = new Producto(nombreProducto, categoriaProducto);
 
-            Boolean existeProducto = false;
-            List<Producto> listaProductos = new ArrayList<>();
-            listaProductos = pRepository.findAll();
-
-            for (Producto xProducto : listaProductos) {
-                if ((xProducto.getIdProducto()).equals(idProducto)) {
-                    existeProducto = true;
-                }
-            }
-
-            if (!existeProducto) {
-                pRepository.save(nuevoProducto);
-            } else {
-                System.out.println("Este producto ya existe");
-            }
+            pRepository.save(nuevoProducto);
         } catch (Exception e) {
             System.out.println("No se ha podido crear el producto");
         }
