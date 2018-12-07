@@ -5,12 +5,12 @@
  */
 package edu.eci.arsw.commerce.persistence.impl;
 
-import edu.eci.arsw.commerce.model.Producto;
-import edu.eci.arsw.commerce.model.ProductoRepository;
-import edu.eci.arsw.commerce.model.VariedadProducto;
-import edu.eci.arsw.commerce.model.VariedadProductoRepository;
+import edu.eci.arsw.commerce.model.producto.Producto;
+import edu.eci.arsw.commerce.model.producto.ProductoRepository;
+import edu.eci.arsw.commerce.model.variedadproducto.VariedadProducto;
+import edu.eci.arsw.commerce.model.variedadproducto.VariedadProductoRepository;
 import edu.eci.arsw.commerce.persistence.ProductPersistence;
-import edu.eci.arsw.commerce.services.ProductServicesException;
+import edu.eci.arsw.commerce.services.producto.ProductServicesException;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;

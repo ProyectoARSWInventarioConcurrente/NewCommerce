@@ -3,22 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package edu.eci.arsw.commerce.model;
+package edu.eci.arsw.commerce.model.transaccion;
 
-import java.util.List;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 /**
  *
  * @author camilo
  */
-public interface ProductoRepository extends MongoRepository<Producto, String> {
-
-    /**
-     *
-     * @param idProducto
-     * @return
-     */
-    public Producto findByidProducto(Integer idProducto);
-
+public interface TransaccionRepository extends MongoRepository<Transaccion, String>{
+    
 }

@@ -5,9 +5,9 @@
  */
 package edu.eci.arsw.commerce.persistence;
 
-import edu.eci.arsw.commerce.model.Producto;
-import edu.eci.arsw.commerce.model.VariedadProducto;
-import edu.eci.arsw.commerce.services.ProductServicesException;
+import edu.eci.arsw.commerce.model.producto.Producto;
+import edu.eci.arsw.commerce.model.variedadproducto.VariedadProducto;
+import edu.eci.arsw.commerce.services.producto.ProductServicesException;
 import java.util.List;
 
 /**

@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package edu.eci.arsw.commerce.services;
+package edu.eci.arsw.commerce.services.usuario;
 
-import edu.eci.arsw.commerce.model.Usuario;
+import edu.eci.arsw.commerce.model.usuario.Usuario;
 import edu.eci.arsw.commerce.persistence.UsuarioPersistence;
 import java.util.Date;
 import java.util.List;

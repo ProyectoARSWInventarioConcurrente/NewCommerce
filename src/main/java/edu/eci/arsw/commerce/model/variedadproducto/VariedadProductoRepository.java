@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package edu.eci.arsw.commerce.model;
+package edu.eci.arsw.commerce.model.variedadproducto;
 
 import java.util.List;
 import org.springframework.data.mongodb.repository.MongoRepository;

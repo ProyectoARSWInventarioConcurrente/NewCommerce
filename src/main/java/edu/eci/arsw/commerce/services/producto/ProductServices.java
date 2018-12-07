@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package edu.eci.arsw.commerce.services;
+package edu.eci.arsw.commerce.services.producto;
 
-import edu.eci.arsw.commerce.model.Producto;
-import edu.eci.arsw.commerce.model.VariedadProducto;
+import edu.eci.arsw.commerce.model.producto.Producto;
+import edu.eci.arsw.commerce.model.variedadproducto.VariedadProducto;
 import java.util.List;
 
 /**

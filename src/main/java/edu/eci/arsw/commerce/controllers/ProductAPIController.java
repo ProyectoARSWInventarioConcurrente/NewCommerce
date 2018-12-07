@@ -6,10 +6,10 @@
 package edu.eci.arsw.commerce.controllers;
 
 import com.google.gson.Gson;
-import edu.eci.arsw.commerce.model.VariedadProducto;
-import edu.eci.arsw.commerce.services.ProductServices;
+import edu.eci.arsw.commerce.model.variedadproducto.VariedadProducto;
+import edu.eci.arsw.commerce.services.producto.ProductServices;
 import com.google.gson.reflect.TypeToken;
-import edu.eci.arsw.commerce.model.Producto;
+import edu.eci.arsw.commerce.model.producto.Producto;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;

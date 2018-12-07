@@ -5,8 +5,8 @@
  */
 package edu.eci.arsw.commerce.persistence.impl;
 
-import edu.eci.arsw.commerce.model.Usuario;
-import edu.eci.arsw.commerce.model.UsuarioRepository;
+import edu.eci.arsw.commerce.model.usuario.Usuario;
+import edu.eci.arsw.commerce.model.usuario.UsuarioRepository;
 import edu.eci.arsw.commerce.persistence.UsuarioPersistence;
 import java.util.ArrayList;
 import java.util.Date;

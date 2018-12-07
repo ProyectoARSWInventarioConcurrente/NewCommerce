@@ -5,7 +5,7 @@
  */
 package edu.eci.arsw.commerce.persistence;
 
-import edu.eci.arsw.commerce.model.Usuario;
+import edu.eci.arsw.commerce.model.usuario.Usuario;
 import java.util.Date;
 import java.util.List;
 
