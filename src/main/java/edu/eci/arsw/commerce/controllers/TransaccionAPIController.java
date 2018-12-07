@@ -51,7 +51,7 @@ public class TransaccionAPIController {
             transaccionesArray.addAll(tServices.obtenerTransacciones());
 
             for (Transaccion x : transaccionesArray) {
-                transacciones.put(x.getIdentificador(), x);
+                transacciones.put(x.getIdTransaccion(), x);
             }
 
             String codeToJson = new Gson().toJson(transacciones);
