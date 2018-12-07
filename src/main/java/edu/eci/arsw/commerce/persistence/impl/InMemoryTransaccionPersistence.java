@@ -10,11 +10,13 @@ import edu.eci.arsw.commerce.model.transaccion.TransaccionRepository;
 import edu.eci.arsw.commerce.persistence.TransaccionPersistence;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 /**
  *
  * @author camilo
  */
+@Service
 public class InMemoryTransaccionPersistence implements TransaccionPersistence {
 
     @Autowired

@@ -9,11 +9,13 @@ import edu.eci.arsw.commerce.model.transaccion.Transaccion;
 import edu.eci.arsw.commerce.persistence.TransaccionPersistence;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 /**
  *
  * @author camilo
  */
+@Service
 public class TransaccionServicesStub implements TransaccionServices{
 
     @Autowired

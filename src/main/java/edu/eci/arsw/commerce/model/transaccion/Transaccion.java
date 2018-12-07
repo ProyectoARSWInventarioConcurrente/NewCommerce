@@ -13,10 +13,10 @@ import org.springframework.data.annotation.Id;
  * @author camilo
  */
 public class Transaccion {
-    
+
     @Id
     public String identificador;
-    
+
     private String tipoTransaccion;
     private Integer cedulaComprador;
     private Integer cedulaVendedor;
@@ -27,6 +27,12 @@ public class Transaccion {
         this.cedulaComprador = cedulaComprador;
         this.cedulaVendedor = cedulaVendedor;
         this.fechaTransaccion = fechaTransaccion;
+    }
+
+    public Transaccion(String tipoTransaccion, Integer cedulaComprador, Integer cedulaVendedor) {
+        this.tipoTransaccion = tipoTransaccion;
+        this.cedulaComprador = cedulaComprador;
+        this.cedulaVendedor = cedulaVendedor;
     }
 
     public String getIdentificador() {
@@ -68,6 +74,5 @@ public class Transaccion {
     public void setFechaTransaccion(Date fechaTransaccion) {
         this.fechaTransaccion = fechaTransaccion;
     }
-    
-    
+
 }
