@@ -10,11 +10,13 @@ import edu.eci.arsw.commerce.model.administrador.AdministradorRepository;
 import edu.eci.arsw.commerce.persistence.AdministradorPersistence;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 /**
  *
  * @author camilo
  */
+@Service
 public class InMemoryAdministradorPersistence implements AdministradorPersistence {
 
     @Autowired
