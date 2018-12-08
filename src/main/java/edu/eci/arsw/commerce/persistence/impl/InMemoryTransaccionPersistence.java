@@ -18,33 +18,33 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class InMemoryTransaccionPersistence implements TransaccionPersistence {
-
+    
     @Autowired
     TransaccionRepository tRepository;
-
+    
     @Override
     public void crearNuevaTransaccion(Transaccion transaccion) {
         tRepository.save(transaccion);
     }
-
+    
     @Override
     public List<Transaccion> obtenerTransacciones() {
         return tRepository.findAll();
     }
-
+    
     @Override
     public List<Transaccion> obtenerTransaccionesPorCedulaVendedor(Integer cedulaVendedor) {
         return tRepository.findBycedulaVendedor(cedulaVendedor);
     }
-
+    
     @Override
     public List<Transaccion> obtenerTransaccionesPorCedulaComprador(Integer cedulaComprador) {
         return tRepository.findBycedulaComprador(cedulaComprador);
     }
-
+    
     @Override
     public void eliminarTransaccion(String idTransaccion) {
         tRepository.delete(idTransaccion);
     }
-
+    
 }

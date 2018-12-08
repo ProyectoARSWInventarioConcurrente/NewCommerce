@@ -27,6 +27,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
+ * Esta clase nos permite realizar o usar los servicios que nos ofrece la
+ * transaccion mediante peticiones HTML.
  *
  * @author camilo
  */
@@ -93,9 +95,11 @@ public class TransaccionAPIController {
     }
 
     /**
+     * Este metodo retorna cada una de las transacciones que ha realizado un
+     * vendedor.
      *
-     * @param cedulaVendedor
-     * @return
+     * @param cedulaVendedor El numero de la cedula del vendedor.
+     * @return El estado de la solicitud HTTP.
      */
     @RequestMapping(method = RequestMethod.GET, path = "/transacciones/vendedor/{cedulaVendedor}")
     public ResponseEntity<?> obtenerTransaccionesPorCedulaVendedor(@PathVariable("cedulaVendedor") Integer cedulaVendedor) {
@@ -119,12 +123,14 @@ public class TransaccionAPIController {
     }
 
     /**
+     * Este metodo retorna cada una de las transacciones que ha realizado un
+     * comprador
      *
-     * @param cedulaComprador
-     * @return
+     * @param cedulaComprador El numero de cedula del comprador
+     * @return EL estado de la peticion HTTP.
      */
     @RequestMapping(method = RequestMethod.GET, path = "/transacciones/comprador/{cedulaComprador}")
-    public ResponseEntity<?> obtenerTransaccionesPorCedulaComprador(@PathVariable("cedulaComprador") Integer cedulaComprador){
+    public ResponseEntity<?> obtenerTransaccionesPorCedulaComprador(@PathVariable("cedulaComprador") Integer cedulaComprador) {
         try {
             Map<String, Transaccion> transacciones = new HashMap();
 
@@ -141,25 +147,26 @@ public class TransaccionAPIController {
         } catch (Exception ex) {
             Logger.getLogger(ProductAPIController.class.getName()).log(Level.SEVERE, null, ex);
             return new ResponseEntity<>("No se ha podido retornar las transacciones del comprador", HttpStatus.NOT_FOUND);
-        }        
+        }
     }
-    
+
     /**
+     * Este metodo elimina una transaccion ya realizada.
      *
-     * @param idTransaccion
-     * @return
+     * @param idTransaccion El id de la transaccion que se va a eliminar.
+     * @return El estado de la peticion HTTP.
      */
     @RequestMapping(method = RequestMethod.DELETE, path = "/transacciones/eliminar/{idTransaccion}")
-    public ResponseEntity<?> eliminarTransaccion(@PathVariable("idTransaccion") String idTransaccion){
+    public ResponseEntity<?> eliminarTransaccion(@PathVariable("idTransaccion") String idTransaccion) {
         try {
-            
+
             tServices.eliminarTransaccion(idTransaccion);
-            
+
             return new ResponseEntity<>(HttpStatus.ACCEPTED);
         } catch (Exception ex) {
             Logger.getLogger(ProductAPIController.class.getName()).log(Level.SEVERE, null, ex);
             return new ResponseEntity<>("No se ha podido eliminar la transaccion", HttpStatus.NOT_FOUND);
-        }         
+        }
     }
-    
+
 }
