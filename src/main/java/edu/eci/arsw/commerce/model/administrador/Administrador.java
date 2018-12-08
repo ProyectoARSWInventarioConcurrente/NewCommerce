@@ -16,12 +16,14 @@ public class Administrador {
     @Id
     public String idAdministrador;
     
-    private Integer cedulaAdministrador;
+    private final Integer cedulaAdministrador;
     private String nombreAdministrador;
+    private final String contraseñaAdministrador;
 
-    public Administrador(Integer cedulaAdministrador, String nombreAdministrador) {
+    public Administrador(Integer cedulaAdministrador, String nombreAdministrador, String contraseñaAdministrador) {
         this.cedulaAdministrador = cedulaAdministrador;
         this.nombreAdministrador = nombreAdministrador;
+        this.contraseñaAdministrador = contraseñaAdministrador;
     }
 
     public String getIdAdministrador() {
@@ -36,10 +38,6 @@ public class Administrador {
         return cedulaAdministrador;
     }
 
-    public void setCedulaAdministrador(Integer cedulaAdministrador) {
-        this.cedulaAdministrador = cedulaAdministrador;
-    }
-
     public String getNombreAdministrador() {
         return nombreAdministrador;
     }
@@ -47,5 +45,8 @@ public class Administrador {
     public void setNombreAdministrador(String nombreAdministrador) {
         this.nombreAdministrador = nombreAdministrador;
     }
-    
+
+    public String getContraseñaAdministrador() {
+        return contraseñaAdministrador;
+    }    
 }
