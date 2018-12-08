@@ -39,8 +39,7 @@ public interface ProductServices {
      * @param idUsuario Id del cliente al cual pertenece el producto
      * @throws com.arsw.project.commerce.services.ProductServicesException
      */
-    public void crearNuevaVariedadDeProducto(Integer idProducto, Integer idVProducto,
-            String nombreVProducto, Integer idUsuario) throws ProductServicesException;
+    public void crearNuevaVariedadDeProducto(VariedadProducto vpr) throws ProductServicesException;
 
     /**
      * Obtener la variedad de producto dado un id

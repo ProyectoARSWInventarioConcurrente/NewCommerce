@@ -20,6 +20,7 @@ import java.util.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -51,7 +52,7 @@ public class TransaccionAPIController {
             transaccionesArray.addAll(tServices.obtenerTransacciones());
 
             for (Transaccion x : transaccionesArray) {
-                transacciones.put(x.getIdentificador(), x);
+                transacciones.put(x.getIdTransaccion(), x);
             }
 
             String codeToJson = new Gson().toJson(transacciones);
@@ -65,6 +66,7 @@ public class TransaccionAPIController {
 
     /**
      * Este metodo crea una transaccion nueva dada.
+     *
      * @param transaccion La transaccion que sera creada.
      * @return El esta de la peticion HTTP en caso de ser creada o denegada.
      */
@@ -90,4 +92,74 @@ public class TransaccionAPIController {
         }
     }
 
+    /**
+     *
+     * @param cedulaVendedor
+     * @return
+     */
+    @RequestMapping(method = RequestMethod.GET, path = "/transacciones/vendedor/{cedulaVendedor}")
+    public ResponseEntity<?> obtenerTransaccionesPorCedulaVendedor(@PathVariable("cedulaVendedor") Integer cedulaVendedor) {
+        try {
+            Map<String, Transaccion> transacciones = new HashMap();
+
+            List<Transaccion> transaccionesArray = new ArrayList<>();
+            transaccionesArray.addAll(tServices.obtenerTransaccionesPorCedulaVendedor(cedulaVendedor));
+
+            for (Transaccion x : transaccionesArray) {
+                transacciones.put(x.getIdTransaccion(), x);
+            }
+
+            String codeToJson = new Gson().toJson(transacciones);
+
+            return new ResponseEntity<>(codeToJson, HttpStatus.ACCEPTED);
+        } catch (Exception ex) {
+            Logger.getLogger(ProductAPIController.class.getName()).log(Level.SEVERE, null, ex);
+            return new ResponseEntity<>("No se ha podido retornar las transacciones del vendedor", HttpStatus.NOT_FOUND);
+        }
+    }
+
+    /**
+     *
+     * @param cedulaComprador
+     * @return
+     */
+    @RequestMapping(method = RequestMethod.GET, path = "/transacciones/comprador/{cedulaComprador}")
+    public ResponseEntity<?> obtenerTransaccionesPorCedulaComprador(@PathVariable("cedulaComprador") Integer cedulaComprador){
+        try {
+            Map<String, Transaccion> transacciones = new HashMap();
+
+            List<Transaccion> transaccionesArray = new ArrayList<>();
+            transaccionesArray.addAll(tServices.obtenerTransaccionesPorCedulaComprador(cedulaComprador));
+
+            for (Transaccion x : transaccionesArray) {
+                transacciones.put(x.getIdTransaccion(), x);
+            }
+
+            String codeToJson = new Gson().toJson(transacciones);
+
+            return new ResponseEntity<>(codeToJson, HttpStatus.ACCEPTED);
+        } catch (Exception ex) {
+            Logger.getLogger(ProductAPIController.class.getName()).log(Level.SEVERE, null, ex);
+            return new ResponseEntity<>("No se ha podido retornar las transacciones del comprador", HttpStatus.NOT_FOUND);
+        }        
+    }
+    
+    /**
+     *
+     * @param idTransaccion
+     * @return
+     */
+    @RequestMapping(method = RequestMethod.DELETE, path = "/transacciones/eliminar/{idTransaccion}")
+    public ResponseEntity<?> eliminarTransaccion(@PathVariable("idTransaccion") String idTransaccion){
+        try {
+            
+            tServices.eliminarTransaccion(idTransaccion);
+            
+            return new ResponseEntity<>(HttpStatus.ACCEPTED);
+        } catch (Exception ex) {
+            Logger.getLogger(ProductAPIController.class.getName()).log(Level.SEVERE, null, ex);
+            return new ResponseEntity<>("No se ha podido eliminar la transaccion", HttpStatus.NOT_FOUND);
+        }         
+    }
+    
 }

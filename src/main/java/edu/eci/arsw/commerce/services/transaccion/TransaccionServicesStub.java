@@ -30,5 +30,20 @@ public class TransaccionServicesStub implements TransaccionServices{
     public List<Transaccion> obtenerTransacciones() {
         return tPersistence.obtenerTransacciones();
     }
+
+    @Override
+    public List<Transaccion> obtenerTransaccionesPorCedulaVendedor(Integer cedulaVendedor) {
+        return tPersistence.obtenerTransaccionesPorCedulaVendedor(cedulaVendedor);
+    }
+
+    @Override
+    public List<Transaccion> obtenerTransaccionesPorCedulaComprador(Integer cedulaComprador) {
+        return tPersistence.obtenerTransaccionesPorCedulaComprador(cedulaComprador);
+    }
+
+    @Override
+    public void eliminarTransaccion(String idTransaccion) {
+        tPersistence.eliminarTransaccion(idTransaccion);
+    }
     
 }

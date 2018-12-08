@@ -229,8 +229,7 @@ public class ProductAPIController {
 
             VariedadProducto vpr = result.get(nameKeys[0]);
 
-            prServices.crearNuevaVariedadDeProducto(vpr.getIdProducto(), vpr.getIdVProducto(), vpr.getNombreVProducto(),
-                    vpr.getIdUsuario());
+            prServices.crearNuevaVariedadDeProducto(vpr);
             return new ResponseEntity<>(HttpStatus.CREATED);
         } catch (Exception ex) {
             Logger.getLogger(ProductAPIController.class.getName()).log(Level.SEVERE, null, ex);

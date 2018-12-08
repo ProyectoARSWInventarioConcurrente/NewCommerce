@@ -5,6 +5,7 @@
  */
 package edu.eci.arsw.commerce.model.transaccion;
 
+import java.util.List;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 /**
@@ -13,4 +14,17 @@ import org.springframework.data.mongodb.repository.MongoRepository;
  */
 public interface TransaccionRepository extends MongoRepository<Transaccion, String>{
     
+    /**
+     *
+     * @param cedulaVendedor
+     * @return
+     */
+    public List<Transaccion> findBycedulaVendedor(Integer cedulaVendedor);
+    
+    /**
+     *
+     * @param cedulaComprador
+     * @return
+     */
+    public List<Transaccion> findBycedulaComprador(Integer cedulaComprador);
 }

@@ -15,19 +15,12 @@ import org.springframework.data.annotation.Id;
 public class Transaccion {
 
     @Id
-    public String identificador;
+    public String idTransaccion;
 
     private String tipoTransaccion;
     private Integer cedulaComprador;
     private Integer cedulaVendedor;
     private Date fechaTransaccion;
-
-    public Transaccion(String tipoTransaccion, Integer cedulaComprador, Integer cedulaVendedor, Date fechaTransaccion) {
-        this.tipoTransaccion = tipoTransaccion;
-        this.cedulaComprador = cedulaComprador;
-        this.cedulaVendedor = cedulaVendedor;
-        this.fechaTransaccion = fechaTransaccion;
-    }
 
     public Transaccion(String tipoTransaccion, Integer cedulaComprador, Integer cedulaVendedor) {
         this.tipoTransaccion = tipoTransaccion;
@@ -35,12 +28,12 @@ public class Transaccion {
         this.cedulaVendedor = cedulaVendedor;
     }
 
-    public String getIdentificador() {
-        return identificador;
+    public String getIdTransaccion() {
+        return idTransaccion;
     }
 
-    public void setIdentificador(String identificador) {
-        this.identificador = identificador;
+    public void setIdTransaccion(String idTransaccion) {
+        this.idTransaccion = idTransaccion;
     }
 
     public String getTipoTransaccion() {

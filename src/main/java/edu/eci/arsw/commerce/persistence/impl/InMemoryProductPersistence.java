@@ -44,28 +44,9 @@ public class InMemoryProductPersistence implements ProductPersistence {
     }
 
     @Override
-    public void crearNuevaVariedadDeProducto(Integer idProducto, Integer idVProducto,
-            String nombreVProducto, Integer idUsuario) throws ProductServicesException {
+    public void crearNuevaVariedadDeProducto(VariedadProducto vpr) throws ProductServicesException {
         try {
-            VariedadProducto nuevaVariedadProducto = new VariedadProducto(idProducto,
-                    idVProducto, nombreVProducto, idUsuario);
-
-            Boolean existeVProducto = false;
-            List<VariedadProducto> listaVariedadProductos = new ArrayList<>();
-            listaVariedadProductos = vpRepository.findAll();
-
-            for (VariedadProducto vProducto : listaVariedadProductos) {
-                if ((vProducto.getIdProducto()).equals(idProducto)) {
-                    existeVProducto = true;
-                }
-            }
-
-            if (!existeVProducto) {
-                vpRepository.save(nuevaVariedadProducto);
-            } else {
-                System.out.println("La variedad de producto ya existe");
-            }
-
+            vpRepository.save(vpr);
         } catch (Exception e) {
             System.out.println("No se ha podido crear la variedad del producto");
         }
