@@ -36,12 +36,61 @@ function iniciarSesion() {
     axios.get('/commerceUsuario/usuarios/' + document.getElementById("inCedula").value)
             .then(function (response) {
                 if (response.data["contraseñaUsuario"] === document.getElementById("inContraseña").value) {
-                    alert("Incio de sesion correcto");
-                } else{
+                    location.href = "panelUsuario.html";
+                } else {
                     alert("Contraseña incorrecta");
                 }
             })
             .catch(function (error) {
                 alert("Este usuario no existe");
+            })
+}
+
+/**
+ * 
+ * @returns {undefined}
+ */
+function cargarUsuario() {
+    axiox.get(''.value)
+            .then(function (response) {
+
+            })
+
+}
+
+function actualizarTablas() {
+    var tbody = document.getElementById("tbodyTablaProducto");
+    axios.get('/commerceProducto/variedades')
+            .then(function (response) {
+                for (var x in response.data) {
+                    var filatr = document.createElement("tr");
+                    for (var y in response.data[x]) {
+                        var columna = document.createElement("td");
+                        columna.innerHTML = response.data[x][y];
+                        filatr.appendChild(columna);
+                    }
+                    tbody.appendChild(filatr);
+                }
+
+            })
+}
+
+function actualizarAnadirProducto() {
+    var selectCategoriaProducto = document.getElementById("");
+    var cedulaUsuario = document.getElementById("");
+    var selectLocalizacion = document.getElementById("");
+    
+    axios.get('/commerceProducto/variedades')
+            .then(function (response) {
+                for (var x in response.data) {
+                    var filatr = document.createElement("tr");
+                    for (var y in response.data[x]) {
+                        var columna = document.createElement("td");
+                        columna.innerHTML = response.data[x][y];
+                        filatr.appendChild(columna);
+                    }
+                    tbody.appendChild(filatr);
+                }
+
             })
 }
