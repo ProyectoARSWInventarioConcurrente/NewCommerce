@@ -9,40 +9,50 @@ import edu.eci.arsw.commerce.model.transaccion.Transaccion;
 import java.util.List;
 
 /**
+ * Esta clase nos ofrece la persistencia de las transacciones, las cuales
+ * consisten en la implementacion de los servicios que ofrecen las
+ * transacciones.
  *
  * @author camilo
  */
 public interface TransaccionPersistence {
-    
+
     /**
+     * Este metodo permite crear una nueva Transaccion en el sistema.
      *
-     * @param transaccion
+     * @param transaccion El objeto transaccion que sera creado.
      */
     public void crearNuevaTransaccion(Transaccion transaccion);
-    
+
     /**
+     * Este metodo devuelve todas las transacciones que han sido creadas.
      *
-     * @return
+     * @return Una lista con todas las transacciones.
      */
     public List<Transaccion> obtenerTransacciones();
-    
+
     /**
+     * Este metodo permite obtener una o muchas transacciones dada una cedula de
+     * un vendedor.
      *
-     * @param cedulaVendedor
-     * @return
+     * @param cedulaVendedor El numero de cedula del vendedor.
+     * @return La lista con las transacciones que ha realizado el vendedor.
      */
     public List<Transaccion> obtenerTransaccionesPorCedulaVendedor(Integer cedulaVendedor);
-    
+
     /**
+     * Este metodo perminte obtener una o muchas transacciones dada una cedula
+     * de un comprador.
      *
-     * @param cedulaComprador
-     * @return
+     * @param cedulaComprador El numero de cedula del comprador.
+     * @return La lista con las transacciones que ha realizado el comprador.
      */
     public List<Transaccion> obtenerTransaccionesPorCedulaComprador(Integer cedulaComprador);
-    
+
     /**
+     * Este metodo permite eliminar una transaccion que ya se ha realizado.
      *
-     * @param idTransaccion
+     * @param idTransaccion El id el cual pertenece a la transaccion.
      */
     public void eliminarTransaccion(String idTransaccion);
 }

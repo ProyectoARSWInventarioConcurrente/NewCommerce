@@ -21,11 +21,9 @@ public class VariedadProducto {
     public String idVProducto;
 
     private Integer precioProducto;
-    private Date fabricacionProducto;
-    private Date caducidadProducto;
+    private Date fechaCosecha;
     private String nombreVProducto;
     private Integer idProducto;
-    private Double descuentoPrecioProducto;
     private Integer idUsuario;
     private Integer cantidadVProducto;
 
@@ -40,7 +38,8 @@ public class VariedadProducto {
      * @param idUsuario Id del usuario al cual pertenece el producto
      */
     public VariedadProducto(Integer idProducto, String nombreVProducto,
-            Integer idUsuario, Integer precioProducto, Integer cantidadVProducto) {
+            Integer idUsuario, Integer precioProducto, Integer cantidadVProducto,
+            Date fechaCosecha) {
         this.idProducto = idProducto;
         this.nombreVProducto = nombreVProducto;
         this.idUsuario = idUsuario;
@@ -54,22 +53,6 @@ public class VariedadProducto {
 
     public void setPrecioProducto(Integer precioProducto) {
         this.precioProducto = precioProducto;
-    }
-
-    public Date getFabricacionProducto() {
-        return fabricacionProducto;
-    }
-
-    public void setFabricacionProducto(Date fabricacionProducto) {
-        this.fabricacionProducto = fabricacionProducto;
-    }
-
-    public Date getCaducidadProducto() {
-        return caducidadProducto;
-    }
-
-    public void setCaducidadProducto(Date caducidadProducto) {
-        this.caducidadProducto = caducidadProducto;
     }
 
     public String getNombreVProducto() {
@@ -94,14 +77,6 @@ public class VariedadProducto {
 
     public void setCantidadVProducto(Integer cantidadVProducto) {
         this.cantidadVProducto = cantidadVProducto;
-    }
-
-    public Double getDescuentoPrecioProducto() {
-        return descuentoPrecioProducto;
-    }
-
-    public void setDescuentoPrecioProducto(Double descuentoPrecioProducto) {
-        this.descuentoPrecioProducto = descuentoPrecioProducto;
     }
 
     public Integer getIdProducto() {

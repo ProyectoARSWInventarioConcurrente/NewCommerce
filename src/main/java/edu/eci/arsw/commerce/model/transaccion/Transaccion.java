@@ -9,6 +9,9 @@ import java.util.Date;
 import org.springframework.data.annotation.Id;
 
 /**
+ * Esta clase es la de Transaccion, una transaccion es la accion que se realiza
+ * entre un comprador y un vendedor, en este caso sera la venta, la compra o el
+ * intercambion de un producto determinado.
  *
  * @author camilo
  */
