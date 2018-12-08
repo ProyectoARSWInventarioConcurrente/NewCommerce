@@ -32,4 +32,19 @@ public class InMemoryTransaccionPersistence implements TransaccionPersistence {
         return tRepository.findAll();
     }
 
+    @Override
+    public List<Transaccion> obtenerTransaccionesPorCedulaVendedor(Integer cedulaVendedor) {
+        return tRepository.findBycedulaVendedor(cedulaVendedor);
+    }
+
+    @Override
+    public List<Transaccion> obtenerTransaccionesPorCedulaComprador(Integer cedulaComprador) {
+        return tRepository.findBycedulaComprador(cedulaComprador);
+    }
+
+    @Override
+    public void eliminarTransaccion(String idTransaccion) {
+        tRepository.delete(idTransaccion);
+    }
+
 }

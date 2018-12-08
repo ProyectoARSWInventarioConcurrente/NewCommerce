@@ -18,7 +18,7 @@ import org.springframework.data.mongodb.core.mapping.Field;
 public class VariedadProducto {
 
     @Id
-    private Integer idVProducto;
+    public String idVProducto;
 
     private Integer precioProducto;
     private Date fabricacionProducto;
@@ -27,24 +27,25 @@ public class VariedadProducto {
     private Integer idProducto;
     private Double descuentoPrecioProducto;
     private Integer idUsuario;
+    private Integer cantidadVProducto;
 
     /**
      * Creacion de la variedad del producto dado cada uno de sus atributos el
      * cual componen al producto
      *
-     * @param nombreProducto Nombre del producto al que pertenece
      * @param idProducto Id del producto al que pertenece
-     * @param categoriaProducto Categoria del producto al cual pertenece
-     * @param idVProducto Id de la variedad del producto
+     * @param precioProducto
+     * @param cantidadVProducto
      * @param nombreVProducto Nombre de la variedad del producto
      * @param idUsuario Id del usuario al cual pertenece el producto
      */
-    public VariedadProducto(Integer idProducto, Integer idVProducto,
-            String nombreVProducto, Integer idUsuario) {
+    public VariedadProducto(Integer idProducto, String nombreVProducto,
+            Integer idUsuario, Integer precioProducto, Integer cantidadVProducto) {
         this.idProducto = idProducto;
-        this.idVProducto = idVProducto;
         this.nombreVProducto = nombreVProducto;
         this.idUsuario = idUsuario;
+        this.precioProducto = precioProducto;
+        this.cantidadVProducto = cantidadVProducto;
     }
 
     public Integer getPrecioProducto() {
@@ -79,12 +80,20 @@ public class VariedadProducto {
         this.nombreVProducto = nombreProducto;
     }
 
-    public Integer getIdVProducto() {
+    public String getIdVProducto() {
         return idVProducto;
     }
 
-    public void setIdVProducto(Integer idProducto) {
+    public void setIdVProducto(String idProducto) {
         this.idVProducto = idProducto;
+    }
+
+    public Integer getCantidadVProducto() {
+        return cantidadVProducto;
+    }
+
+    public void setCantidadVProducto(Integer cantidadVProducto) {
+        this.cantidadVProducto = cantidadVProducto;
     }
 
     public Double getDescuentoPrecioProducto() {

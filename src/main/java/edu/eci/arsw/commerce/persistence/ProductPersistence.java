@@ -28,16 +28,10 @@ public interface ProductPersistence {
 
     /**
      *
-     * @param nombreProducto
-     * @param idProducto
-     * @param categoriaProducto
-     * @param idVProducto
-     * @param nombreVProducto
-     * @param idUsuario
+     * @param vpr
      * @throws ProductServicesException
      */
-    public void crearNuevaVariedadDeProducto(Integer idProducto, Integer idVProducto,
-            String nombreVProducto, Integer idUsuario) throws ProductServicesException;
+    public void crearNuevaVariedadDeProducto(VariedadProducto vpr) throws ProductServicesException;
 
     /**
      *

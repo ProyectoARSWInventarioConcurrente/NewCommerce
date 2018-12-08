@@ -26,4 +26,23 @@ public interface TransaccionPersistence {
      */
     public List<Transaccion> obtenerTransacciones();
     
+    /**
+     *
+     * @param cedulaVendedor
+     * @return
+     */
+    public List<Transaccion> obtenerTransaccionesPorCedulaVendedor(Integer cedulaVendedor);
+    
+    /**
+     *
+     * @param cedulaComprador
+     * @return
+     */
+    public List<Transaccion> obtenerTransaccionesPorCedulaComprador(Integer cedulaComprador);
+    
+    /**
+     *
+     * @param idTransaccion
+     */
+    public void eliminarTransaccion(String idTransaccion);
 }
