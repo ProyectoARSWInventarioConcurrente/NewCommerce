@@ -32,8 +32,8 @@ public class AdministradorServicesStub implements AdministradorServices {
     }
 
     @Override
-    public Administrador obtenerAdministradorPorId(String idAdmin) {
-        return aPersistence.obtenerAdministradorPorId(idAdmin);
+    public Administrador obtenerAdministradorPorCedula(Integer cedulaAdmin) {
+        return aPersistence.obtenerAdministradorPorCedula(cedulaAdmin);
     }
 
 }

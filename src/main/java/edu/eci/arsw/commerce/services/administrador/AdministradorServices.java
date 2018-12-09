@@ -28,9 +28,9 @@ public interface AdministradorServices {
 
     /**
      *
-     * @param idAdmin
+     * @param cedulaAdmin
      * @return
      */
-    public Administrador obtenerAdministradorPorId(String idAdmin);
+    public Administrador obtenerAdministradorPorCedula(Integer cedulaAdmin);
 
 }

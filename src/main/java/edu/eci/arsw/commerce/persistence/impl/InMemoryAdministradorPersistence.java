@@ -21,7 +21,7 @@ public class InMemoryAdministradorPersistence implements AdministradorPersistenc
 
     @Autowired
     AdministradorRepository aRepository;
-    
+
     @Override
     public void crearNuevoAdministrador(Administrador admin) {
         aRepository.save(admin);
@@ -33,8 +33,12 @@ public class InMemoryAdministradorPersistence implements AdministradorPersistenc
     }
 
     @Override
-    public Administrador obtenerAdministradorPorId(String idAdmin) {
-        return aRepository.findByidAdministrador(idAdmin);
+    public Administrador obtenerAdministradorPorCedula(Integer cedulaAdmin) {
+        try {
+            return aRepository.findBycedulaAdministrador(cedulaAdmin);
+        } catch (Exception ex) {
+            return null;
+        }
     }
 
 }

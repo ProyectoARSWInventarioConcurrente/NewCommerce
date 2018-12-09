@@ -19,6 +19,6 @@ public interface AdministradorRepository extends MongoRepository<Administrador, 
      * @param idAdministrador
      * @return
      */
-    public Administrador findByidAdministrador(String idAdministrador);
+    public Administrador findBycedulaAdministrador(Integer idAdministrador);
     
 }

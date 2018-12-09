@@ -31,5 +31,5 @@ public interface AdministradorPersistence {
      * @param idAdmin
      * @return
      */
-    public Administrador obtenerAdministradorPorId(String idAdmin);
+    public Administrador obtenerAdministradorPorCedula(Integer cedulaAdmin);
 }
