@@ -113,7 +113,7 @@ public class ProductAPIController {
                 productos.put(x.getNombreProducto(), x);
             }
 
-            String codeToJson = new Gson().toJson(productos);
+            String codeToJson = new Gson().toJson(productosArray);
 
             return new ResponseEntity<>(codeToJson, HttpStatus.ACCEPTED);
         } catch (Exception e) {
@@ -244,7 +244,7 @@ public class ProductAPIController {
      * @return
      */
     @RequestMapping(method = RequestMethod.DELETE, path = {"eliminarProducto/{idProducto}"})
-    public ResponseEntity<?> eliminarProductoPorId(@PathVariable("idProducto") Integer idProducto) {
+    public ResponseEntity<?> eliminarProductoPorId(@PathVariable("idProducto") String idProducto) {
         try {
             prServices.eliminarUnProductoPorId(idProducto);
 

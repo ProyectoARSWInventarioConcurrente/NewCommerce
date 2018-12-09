@@ -89,7 +89,7 @@ public interface ProductServices {
      *
      * @param idPorducto El id del producto a ser eliminado
      */
-    public void eliminarUnProductoPorId(Integer idPorducto);
+    public void eliminarUnProductoPorId(String idPorducto);
 
     /**
      * Esta funcion se encarga de borrar una variedad de producto mediante su Id

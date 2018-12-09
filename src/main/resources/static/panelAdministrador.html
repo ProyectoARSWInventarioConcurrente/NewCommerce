@@ -33,9 +33,9 @@ and open the template in the editor.
         </div>
 
         <div style="display: flex; justify-content: center; align-items: center;">
-            <button type="button" class="btn btn-outline-secondary" id="cProducto">Crear producto</button>
+            <button type="button" onclick="cargarCrearProducto()" class="btn btn-outline-secondary" id="cProducto">Crear producto</button>
             &nbsp;
-            <button type="button" class="btn btn-outline-secondary" id="eProducto">Eliminar producto</button>
+            <button type="button" onclick="cargarEliminarProducto()" class="btn btn-outline-secondary" id="eProducto">Eliminar producto</button>
             &nbsp;
             <button type="button" class="btn btn-outline-secondary" id="eUsuario">Eliminar usuario</button>
         </div>
@@ -58,11 +58,11 @@ and open the template in the editor.
         <script src="js/AdminController.js"></script>
         <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
         <script>
-            Holder.addTheme('thumb', {
-                bg: '#55595c',
-                fg: '#eceeef',
-                text: 'Thumbnail'
-            });
+                Holder.addTheme('thumb', {
+                    bg: '#55595c',
+                    fg: '#eceeef',
+                    text: 'Thumbnail'
+                });
         </script>
 
 
