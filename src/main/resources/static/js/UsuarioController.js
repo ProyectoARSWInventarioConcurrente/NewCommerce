@@ -4,6 +4,8 @@
  * and open the template in the editor.
  */
 
+var cedulaUsuario;
+
 /**
  * 
  * @returns {undefined}
@@ -36,7 +38,10 @@ function iniciarSesion() {
     axios.get('/commerceUsuario/usuarios/' + document.getElementById("inCedula").value)
             .then(function (response) {
                 if (response.data["contraseñaUsuario"] === document.getElementById("inContraseña").value) {
+
+                    cedulaUsuario = document.getElementById("inCedula").value;
                     location.href = "panelUsuario.html";
+
                 } else {
                     alert("Contraseña incorrecta");
                 }
@@ -51,14 +56,21 @@ function iniciarSesion() {
  * @returns {undefined}
  */
 function cargarUsuario() {
-    axiox.get(''.value)
+    axiox.get('/commerceUsuario/usuarios/')
             .then(function (response) {
-
+                alert(cedulaUsuario);
+                /**alert(response.data["nombreUsuario"])
+                 document.getElementById("nombreUsuario").value = response.data["nombreUsuario"];
+                 document.getElementById("apellidoUsuario").value = response.data["apellidoUsuario"];
+                 document.getElementById("nombreUsuario").value = response.data["nombreUsuario"];*/
+            })
+            .catch(function (error) {
+                alert("error al cargar usuario")
             })
 
 }
 
-function actualizarTablas() {
+function actualizarPanelUsuario() {
     var tbody = document.getElementById("tbodyTablaProducto");
     axios.get('/commerceProducto/variedades')
             .then(function (response) {
@@ -79,7 +91,7 @@ function actualizarAnadirProducto() {
     var selectCategoriaProducto = document.getElementById("");
     var cedulaUsuario = document.getElementById("");
     var selectLocalizacion = document.getElementById("");
-    
+
     axios.get('/commerceProducto/variedades')
             .then(function (response) {
                 for (var x in response.data) {
