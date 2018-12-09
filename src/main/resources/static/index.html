@@ -16,7 +16,7 @@
 
         <!-- Custom styles for this template -->
         <link href="css/pricing.css" rel="stylesheet">
-        <link href="css/cover.css" rel="stylesheet">
+        <!--        <link href="css/cover.css" rel="stylesheet">-->
     </head>
 
     <body>
@@ -26,10 +26,12 @@
             <nav class="my-2 my-md-0 mr-md-3">
                 <a class="p-2 text-dark" href="https://getbootstrap.com/docs/4.0/examples/pricing/#">Acerca de nostros</a>
             </nav>
-            <a class="btn btn-outline-primary" href="iniciarSesion.html">Iniciar sesion</a>
+            <a class="btn btn-outline-primary" href="iniciarSesionUsuario.html">Iniciar sesion usuario</a>
+            &nbsp;
+            <a class="btn btn-outline-primary" href="iniciarSesionAdmin.html">Iniciar sesion admin</a>
         </div>
 
-        <!-- Cuerpo descripción -->
+<!--         Cuerpo descripción 
         <div style="background: #2d0000e6; text-align: center!important; padding: 40px">
             <p class="lead" id="regPhrase"><h3>Nuestro inventario concurrente te permite comprar, vender o intercambiar productos en tiempo real con otros usuarios de forma segura.</h3></p>
 
@@ -50,14 +52,14 @@
                 </p>
             </div>
         </div>
-    </div>
+    </div>-->
     <!--fin Cuerpo descripción -->
 
     <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
         <h1 class="display-4" id="regTitle">¿No tienes cuenta? ¡Registrate!</h1>
         <p class="lead" id="regPhrase">Nuestro inventario concurrente te permite comprar, vender o intercambiar productos en tiempo real con otros usuarios de forma segura.</p>
     </div>
-    <form onsubmit="registrarUsuario()" action="iniciarSesion.html" id="regForm">
+    <form onsubmit="registrarUsuario()" action="iniciarSesionUsuario.html" id="regForm">
         <div style="display: flex; justify-content: center; align-items: center;">
             <div class="input-group mb-3 " style="width: 30%">
                 <div class="input-group-prepend">
@@ -126,17 +128,6 @@
             <button type="submit" class="btn btn-secondary" style="width: 30%" value="iniciarSesion">Registrarme</button>
         </div>
     </form>
-    
-    <br>
-    <br>
-
-    <!-- Agregar Pie de pagina -->
-    <footer class="mastfoot mt-auto" style="text-align: center">
-        <div class="inner">
-            <p>Cover template for <a href="https://getbootstrap.com/">Bootstrap</a>, by Commerce ALV.</p>
-        </div>
-    </footer>
-    <!-- ---FIN---- -->
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
