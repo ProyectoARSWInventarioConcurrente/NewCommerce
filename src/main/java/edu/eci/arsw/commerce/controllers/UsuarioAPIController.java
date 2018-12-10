@@ -179,7 +179,7 @@ public class UsuarioAPIController {
      *
      * @return El estado de la peticion HTTP
      */
-    @RequestMapping(method = RequestMethod.GET, path = {"usuarioActual/"})
+    @RequestMapping(method = RequestMethod.GET, path = {"usuarioActual"})
     public ResponseEntity<?> obtenerUsuarioActualPorCedula() {
         try {
             Map<String, Usuario> usuario = new HashMap<>();
@@ -202,7 +202,7 @@ public class UsuarioAPIController {
      *
      * @return
      */
-    @RequestMapping(method = RequestMethod.DELETE, path = {"cerrarSesion/"})
+    @RequestMapping(method = RequestMethod.DELETE, path = {"cerrarSesion"})
     public ResponseEntity<?> cerrarSesionUsuarioActual() {
         try {
             usuarioActual = null;
@@ -221,8 +221,8 @@ public class UsuarioAPIController {
      *
      * @return El estado de la peticion HTTP
      */
-    @RequestMapping(method = RequestMethod.GET, path = {"pedirActual/"})
-    public ResponseEntity<?> pedirCedulaUsuarioActual() {
+    @RequestMapping(method = RequestMethod.GET, path = {"cedulaUsuarioActual"})
+    public ResponseEntity<?> obtenerCedulaUsuarioActual() {
         try {
             
 
