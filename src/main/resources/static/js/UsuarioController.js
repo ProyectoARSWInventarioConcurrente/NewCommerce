@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 
-var cedulaUsuario;
 
 /**
  * 
@@ -39,11 +38,13 @@ function iniciarSesion() {
             .then(function (response) {
                 console.log(response.data["contraseñaUsuario"]);
                 if (response.data["contraseñaUsuario"] === document.getElementById("inContraseña").value) {
-                    this.cedulaUsuario = document.getElementById("inCedula").value;
-                    console.log(this.cedulaUsuario);
-                    //alert("cedula" + cedulaUsuario);
+                    axios.post('/commerceUsuario/mantenerUsuario/' + document.getElementById("inCedula").value)
+                            .then(function (response) {
+                                console.log(response.data);
+                            })
+                    //var cedula = pedirCedulaActual();
+                    //alert("sirvio cedula: " + cedula);
                     location.href = "panelUsuario.html";
-
                 } else {
                     alert("Contraseña incorrecta");
                 }
@@ -53,28 +54,45 @@ function iniciarSesion() {
             })
 }
 
+function cerrarSesion() {
+    axios.delete('/commerceUsuario/cerrarSesion/')
+            .then(function (response) {
+                location.href = "index.html";
+            })
+            .catch(function (error) {
+                alert("Erro, no se puede cerrar sesion")
+            })
+
+}
+
 /**
  * 
  * @returns {undefined}
  */
 function cargarUsuario() {
-    axios.get('/commerceUsuario/usuarios/')
+
+    axios.get('/commerceUsuario/usuarioActual/')
             .then(function (response) {
-                alert(this.cedulaUsuario);
-                /**alert(response.data["nombreUsuario"])
-                 document.getElementById("nombreUsuario").value = response.data["nombreUsuario"];
-                 document.getElementById("apellidoUsuario").value = response.data["apellidoUsuario"];
-                 document.getElementById("nombreUsuario").value = response.data["nombreUsuario"];*/
+                //console.log(response.data["nombreUsuario"]);
+                document.getElementById("nombreUsuarioActual").innerHTML = response.data["nombreUsuario"] + " " + response.data["apellidoUsuario"];
+                document.getElementById("calificacionUsuarioActual").innerHTML = " Clasificacion: " + response.data["calificacionUsuario"];
+                document.getElementById("saldoUsuarioActual").innerHTML = "Saldo: $" + response.data["saldoUsuario"] + " USD";
+                actualizarProductosEnVenta();
+                actualizarTransaccionesEnCurso(response.data["cedulaUsuario"]);
+                //actualizarAnadirProducto();
+                //actualizarHistorialDeTransacciones(response.data["cedulaUsuario"]);
             })
             .catch(function (error) {
-                alert("error al cargar usuario")
+                alert("Esta pagina requiere iniciar sesion");
+                location.href = "index.html";
             })
 
 }
 
-function actualizarPanelUsuario() {
+
+function actualizarProductosEnVenta() {
     var tbody = document.getElementById("tbodyTablaProducto");
-    axios.get('/commerceProducto/variedades')
+    axios.get('/commerceProducto/productos')
             .then(function (response) {
                 for (var x in response.data) {
                     var filatr = document.createElement("tr");
@@ -88,23 +106,94 @@ function actualizarPanelUsuario() {
 
             })
 }
+
+function actualizarTransaccionesEnCurso(cedula) {
+    var tabla = document.getElementById("tablaTransaccionesEnCurso");
+
+    tabla.innerHTML = "<thead><tr><th>Variedad</th><th>Proveedor</th><th>Descripcion</th><th>Metodo</th><th>Fecha</th></tr></thead>" +
+            "<tbody id='tbodyTablaTransaccionesEnCursoV'></tbody><tbody id='tbodyTablaTransaccionesEnCursoC'></tbody>"
+
+    var tbodyV = document.getElementById("tbodyTablaTransaccionesEnCursoV");
+    axios.get('/commerceTransaccion/transacciones/vendedor/' + cedula)
+            .then(function (response) {
+                var ventasNull = response.data[0];
+                for (var x in response.data) {
+                    var filatr = document.createElement("tr");
+                    for (var y in response.data[x]) {
+                        var columna = document.createElement("td");
+                        columna.innerHTML = response.data[x][y];
+                        filatr.appendChild(columna);
+                    }
+                    tbodyV.appendChild(filatr);
+                }
+                if (ventasNull === undefined) {
+                    tbodyV.innerHTML = "<tr><td>no hay ventas</td></tr>";
+                }
+
+            })
+
+    var tbodyC = document.getElementById("tbodyTablaTransaccionesEnCursoC");
+    axios.get('/commerceTransaccion/transacciones/comprador/' + cedula)
+            .then(function (response) {
+                var comprasNull = response.data[0];
+                for (var x in response.data) {
+                    var filatr = document.createElement("tr");
+                    for (var y in response.data[x]) {
+                        var columna = document.createElement("td");
+                        columna.innerHTML = response.data[x][y];
+                        filatr.appendChild(columna);
+                    }
+                    tbodyC.innerHTML = "<tr><td>no hay compras</td></tr>";
+                    //tbodyC.appendChild(filatr);
+                }
+                if (comprasNull === undefined) {
+                    tbodyC.innerHTML = "<tr><td>no hay Compras</td></tr>";
+                }
+
+            })
+}
+
+function actualizarHistorialDeTransacciones() {
+    var tbody = document.getElementById("tbodyTablaHistorialTransacciones");
+    axios.get('/commerceTransaccion/transacciones/vendedor/' + cedulaUsuarioActual)
+            .then(function (response) {
+                for (var x in response.data) {
+                    var filatr = document.createElement("tr");
+                    for (var y in response.data[x]) {
+                        var columna = document.createElement("td");
+                        columna.innerHTML = response.data[x][y];
+                        filatr.appendChild(columna);
+                    }
+                    tbody.appendChild(filatr);
+                }
+
+            })
+}
+
+
+
+
+
+
+/* 
+ * Funciones para controlador de productos
+ * 
+ */
 
 function actualizarAnadirProducto() {
-    var selectCategoriaProducto = document.getElementById("");
-    var cedulaUsuario = document.getElementById("");
-    var selectLocalizacion = document.getElementById("");
-
-    axios.get('/commerceProducto/variedades')
+    //document.getElementById("cedulaUsuarioActual").innerHTML = cedulaActual;
+    axios.get('/commerceProducto/productos')
             .then(function (response) {
+                var selectCategoriaProducto = document.getElementById("selectCategoriaProducto");
                 for (var x in response.data) {
-                    var filatr = document.createElement("tr");
-                    for (var y in response.data[x]) {
-                        var columna = document.createElement("td");
-                        columna.innerHTML = response.data[x][y];
-                        filatr.appendChild(columna);
-                    }
-                    tbody.appendChild(filatr);
-                }
+                    alert(response.data[x]["nombreProducto"]);
+                    var opt = document.createElement("option");
+                    opt.setAttribute("value", response.data[x]["idProducto"]);
+                    var text = document.createTextNode(response.data[x]["nombreProducto"]);
+                    opt.appendChild(text);
+                    alert(opt);
 
+                    selectCategoriaProducto.appendChild(opt);
+                }
             })
 }

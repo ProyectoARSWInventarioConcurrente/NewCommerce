@@ -19,7 +19,7 @@
         <link href="css/cover.css" rel="stylesheet">
     </head>
 
-    <body onload="actualizarAnadirProducto()">
+    <body onload="cargarUsuario()">
 
         <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom box-shadow">
             <h5 class="my-0 mr-md-auto font-weight-normal">Inventario concurrente</h5>
@@ -41,7 +41,7 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="basic-addon3">Cedula</span>
                     </div>
-                    <input type="number" required class="form-control" id="inCedula" aria-describedby="basic-addon3" disabled>
+                    <input type="number" required class="form-control" id="cedulaUsuarioActual" aria-describedby="basic-addon3" disabled>
                 </div>
             </div>
             
@@ -50,12 +50,7 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="basic-addon3">Categoria Producto</span>
                     </div>
-                    <select required class="form-control" id="categoriaProducto" aria-describedby="basic-addon3">
-                        <option value="papa">Papa</option>
-                        <option value="platano">Platano</option>
-                        <option value="tomate">Tomate</option>
-                        <option value="mandarina">Mandarina</option>
-                    </select> 
+                    <select id="selectCategoriaProducto" required class="form-control" aria-describedby="basic-addon3"></select> 
                 </div>
             </div>
             <div style="display: flex; justify-content: center; align-items: center;">
@@ -111,7 +106,7 @@
         <!-- Agregar Pie de pagina -->
         <footer class="mastfoot mt-auto" style="text-align: center">
             <div class="inner">
-                <p>Cover template for <a href="https://getbootstrap.com/">Bootstrap</a>, by Commerce ALV.</p>
+                <p>@2018 | Todos los derechos reservados - by Commerce ALV.</p>
             </div>
         </footer>
         <!-- ---FIN---- -->

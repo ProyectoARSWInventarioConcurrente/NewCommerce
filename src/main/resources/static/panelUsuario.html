@@ -36,14 +36,14 @@
                     <div style="position: fixed;">
                         <div class="panel panel-primary">
                             <div class="panel-heading">
-                                <h4><div id="nombreUsuario"></div></h4>
+                                <h3 id="nombreUsuarioActual"></h3><h4 id="calificacionUsuarioActual"></h4>
                                 <img src="img/avatar3.jpg" class="img-circle" height="65" width="65" alt="Avatar">
                             </div>
                             <div class="panel-body">
-                                <h2><span class="label label-success">SALDO: $<div id="saldoUsuario"></div> USD</span></h2>
+                                <h2><span id="saldoUsuarioActual" class="label label-success"></span></h2>
                                 <div class="btn-group">
                                     <a href="registrarProducto.html" class="btn btn-warning">VENDER</a>
-                                    
+
                                 </div>
                                 <hr>
                                 <ul class="nav nav-pills nav-stacked">
@@ -76,7 +76,7 @@
                             </ul>
                             <div class="tab-content">
                                 <div id="comprar" class="tab-pane fade in active">
-                                                                 
+
                                     <table class="table table-condensed table-hover">
                                         <thead>
                                             <tr>
@@ -88,87 +88,20 @@
                                                 <th></th>
                                             </tr>
                                         </thead>
-                                        
+
                                         <tbody id="tbodyTablaProducto"></tbody>
-                                        <!--<tbody>
-                                            <tr>
-                                                <td>
-                                                    PAPA SUPREMA<br>
-                                                    <h5>
-                                                        <span class="label label-danger">Comida</span> 
-                                                        <span class="label label-primary">Verdura</span>
-                                                        <span class="label label-success">Bulto</span> 
-                                                        <span class="label label">Ipsum</span>
-                                                    </h5>
-                                                </td>
-                                                <td>Wilsson Pardo</td>
-                                                <td>
-                                                    1.00 Kg 	=	$ 1,200.00
-                                                </td>
-                                                <td>Venta</td>
-                                                <th>Sep 27, 2015.</th>
-                                                <th><a href="transaccion.html"><button type="submit"  class="btn btn-success">Comprar</button></a></th>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    MANDARINA ONECO
-                                                    <h5>
-                                                        <span class="label label-danger">Comida</span> 
-                                                        <span class="label label-primary">Fruta</span>
-                                                        <span class="label label-success">Bulto</span> 
-                                                        <span class="label label">Ipsum</span>
-                                                    </h5>
-                                                </td>
-                                                <td>Jose Quiroga</td>
-                                                <td>
-                                                    1.00 Kg    =  $ 28,000.00
-                                                </td>
-                                                <td>Intercambio</td>
-                                                <th>Sep 24, 2015.</th>
-                                                <th><button type="submit" class="btn btn-default">Intercambiar</button></th>
-                                            </tr>
-                                        </tbody>-->
+
                                     </table>
                                 </div>
                                 <div id="proceso" class="tab-pane fade">
-                                    <table id="tablaTransaccionesEnCurso"></table>
                                     
-                                    <span>En estos momentos no tiene abierto ningun tipo de transaccion...</span>
+                                    <table id="tablaTransaccionesEnCurso" class="table table-condensed table-hover"></table>
+                                    <span id="sinTransacciones"></span>
                                 </div>
                                 <div id="historial" class="tab-pane fade">
                                     <table id="tablaHistorial"></table>
+
                                     
-                                    <table class="table table-condensed table-hover">
-                                        <thead>
-                                            <tr>
-                                                <th>Variedad</th>
-                                                <th>Proveedor</th>
-                                                <th>Descripcion</th>
-                                                <th>Metodo</th>
-                                                <th>Fecha</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>
-                                                    PAPA SUPREMA<br>
-                                                    <h5>
-                                                        <span class="label label-danger">Comida</span> 
-                                                        <span class="label label-primary">Verdura</span>
-                                                        <span class="label label-success">Bulto</span> 
-                                                        <span class="label label">Ipsum</span>
-                                                    </h5>
-                                                </td>
-                                                <td>Wilsson Pardo</td>
-                                                <td>
-                                                    KILO 	1.00 	KILO 	$ 1,200.00 	$ 0.67 	€ 0.53
-                                                </td>
-                                                <td>Venta</td>
-                                                <th>Sep 27, 2015.</th>
-                                                <th><button type="submit" class="btn btn-info">Ver</button></th>
-                                            </tr>
-                                        </tbody>
-                                    </table>
                                 </div>
                             </div>
                         </div>
@@ -228,7 +161,7 @@
         <!-- Agregar Pie de pagina -->
         <footer class="mastfoot mt-auto" style="text-align: center">
             <div class="inner">
-                <p>Cover template for <a href="https://getbootstrap.com/">Bootstrap</a>, by Commerce ALV.</p>
+                <p>@2018 | Todos los derechos reservados - by Commerce ALV.</p>
             </div>
         </footer>
         <!-- ---FIN---- -->

@@ -33,6 +33,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping(value = "/commerceUsuario")
 public class UsuarioAPIController {
+    
+    private Integer usuarioActual;
 
     @Autowired
     UsuarioServices uServices;
@@ -146,5 +148,92 @@ public class UsuarioAPIController {
                     HttpStatus.FORBIDDEN);
         }
     }
+    
+    /**
+     * Metodos de guardar Usuario Actual
+     */
+    /**
+     * Este metodo permite mantenr elusuario actual mediante su cedula
+     *
+     * @param cedulaUsuario La cedula del usuario a mantener
+     * @return El estado de la peticion HTTP
+     */
+    @RequestMapping(method = RequestMethod.POST, path = {"mantenerUsuario/{cedulaUsuario}"})
+    public ResponseEntity<?> mantenerUsuarioActualPorCedula(@PathVariable("cedulaUsuario") Integer cedulaUsuario) {
+        try {
+            usuarioActual = cedulaUsuario;
+            System.out.println("cedula actual: " + usuarioActual);
+
+            return new ResponseEntity<>(HttpStatus.ACCEPTED);
+        } catch (Exception ex) {
+            Logger.getLogger(ProductAPIController.class.getName()).log(Level.SEVERE, null, ex);
+            return new ResponseEntity<>("No se pudo mantener sesion de usuario con cedula: " + cedulaUsuario,
+                    HttpStatus.FORBIDDEN);
+        }
+    }
+    
+    
+    /**
+     * Este metodo nos permite obtener el usuario Actual mediante el numero de su
+     * cedula Actual
+     *
+     * @return El estado de la peticion HTTP
+     */
+    @RequestMapping(method = RequestMethod.GET, path = {"usuarioActual/"})
+    public ResponseEntity<?> obtenerUsuarioActualPorCedula() {
+        try {
+            Map<String, Usuario> usuario = new HashMap<>();
+
+            Usuario nuevoUsuario = uServices.obtenerUsuarioPorCedula(usuarioActual);
+
+            usuario.put(nuevoUsuario.getNombreUsuario(), nuevoUsuario);
+
+            String codeToJson = new Gson().toJson(nuevoUsuario);
+
+            return new ResponseEntity<>(codeToJson, HttpStatus.ACCEPTED);
+        } catch (Exception ex) {
+            Logger.getLogger(ProductAPIController.class.getName()).log(Level.SEVERE, null, ex);
+            return new ResponseEntity<>("No se ha podido retornar el usuario con cedula: " + usuarioActual, HttpStatus.NOT_FOUND);
+        }
+    }
+    
+    /**
+     * Este metodo se encarga de cerrar sesion del usuario actual mediante su cedula
+     *
+     * @return
+     */
+    @RequestMapping(method = RequestMethod.DELETE, path = {"cerrarSesion/"})
+    public ResponseEntity<?> cerrarSesionUsuarioActual() {
+        try {
+            usuarioActual = null;
+            System.out.println("cedula actual: " + usuarioActual);
+
+            return new ResponseEntity<>(HttpStatus.ACCEPTED);
+        } catch (Exception ex) {
+            Logger.getLogger(ProductAPIController.class.getName()).log(Level.SEVERE, null, ex);
+            return new ResponseEntity<>("No se ha podido cerrar sesion ", HttpStatus.FORBIDDEN);
+        }
+    }
+    
+    
+    /**
+     * Este metodo nos permite pedir la cedula del usuario Actual
+     *
+     * @return El estado de la peticion HTTP
+     */
+    @RequestMapping(method = RequestMethod.GET, path = {"pedirActual/"})
+    public ResponseEntity<?> pedirCedulaUsuarioActual() {
+        try {
+            
+
+            String codeToJson = new Gson().toJson(usuarioActual);
+
+            return new ResponseEntity<>(codeToJson, HttpStatus.ACCEPTED);
+        } catch (Exception ex) {
+            Logger.getLogger(ProductAPIController.class.getName()).log(Level.SEVERE, null, ex);
+            return new ResponseEntity<>("No se ha podido retornar la cedula: " + usuarioActual, HttpStatus.NOT_FOUND);
+        }
+    }
+    
 
 }
