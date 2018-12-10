@@ -8,8 +8,6 @@ package edu.eci.arsw.commerce.controllers;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import edu.eci.arsw.commerce.model.administrador.Administrador;
-import edu.eci.arsw.commerce.model.producto.Producto;
-import edu.eci.arsw.commerce.model.variedadproducto.VariedadProducto;
 import edu.eci.arsw.commerce.services.administrador.AdministradorServices;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -93,17 +91,19 @@ public class AdministradorAPIController {
 
     /**
      *
-     * @param idAdmin
+     * @param cedulaAdmin
      * @return
      */
-    @RequestMapping(method = RequestMethod.GET, path = "admins/{idAdmin}")
-    public ResponseEntity<?> obtenerAdministradorPorId(@PathVariable("idAdmin") String idAdmin){
+    @RequestMapping(method = RequestMethod.GET, path = "admins/{cedulaAdmin}")
+    public ResponseEntity<?> obtenerAdministradorPorCedula(@PathVariable("cedulaAdmin") Integer cedulaAdmin){
         try {
-            Map<String, Administrador> administradores = new HashMap();
+            Map<String, Administrador> administrador = new HashMap();
 
-            administradores.put(idAdmin, aServices.obtenerAdministradorPorId(idAdmin));
+            Administrador admin = aServices.obtenerAdministradorPorCedula(cedulaAdmin);
+            
+            administrador.put(admin.getIdAdministrador(), admin);
 
-            String codeToJson = new Gson().toJson(administradores);
+            String codeToJson = new Gson().toJson(admin);
 
             return new ResponseEntity<>(codeToJson, HttpStatus.ACCEPTED);
         } catch (Exception e) {

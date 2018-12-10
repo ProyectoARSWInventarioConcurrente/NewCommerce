@@ -4,13 +4,67 @@ To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
-<html>
+
+<!-- saved from url=(0051)https://getbootstrap.com/docs/4.0/examples/pricing/ -->
+<html lang="en">
     <head>
-        <title>TODO supply a title</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <link rel="icon" href="https://getbootstrap.com/favicon.ico">
+
+        <title>Inventario Concurrente</title>
+
+        <!-- Bootstrap core CSS -->
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- Custom styles for this template -->
+        <link href="css/pricing.css" rel="stylesheet">
+        <!--<link href="css/cover.css" rel="stylesheet">-->
     </head>
+
     <body>
-        <div>TODO write content</div>
+
+        <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom box-shadow">
+            <h5 class="my-0 mr-md-auto font-weight-normal">Inventario concurrente</h5>
+            <a class="btn btn-outline-primary" href="index.html">Cerrar sesion</a>
+        </div>
+
+        <div style="display: flex; justify-content: center; align-items: center;">
+            <button type="button" onclick="cargarCrearProducto()" class="btn btn-outline-secondary" id="cProducto">Crear producto</button>
+            &nbsp;
+            <button type="button" onclick="cargarEliminarProducto()" class="btn btn-outline-secondary" id="eProducto">Eliminar producto</button>
+            &nbsp;
+            <button type="button" class="btn btn-outline-secondary" id="eUsuario">Eliminar usuario</button>
+        </div>
+        <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+            <h1 class="display-4" id="title"></h1>
+            <p class="lead" id="phrase"></p>
+        </div>
+        <form id="regForm">
+
+        </form>
+
+        <!-- Bootstrap core JavaScript
+        ================================================== -->
+        <!-- Placed at the end of the document so the pages load faster -->
+        <script src="js/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+        <script src="js/popper.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/holder.min.js"></script>
+        <script src="js/AdminController.js"></script>
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+        <script>
+                Holder.addTheme('thumb', {
+                    bg: '#55595c',
+                    fg: '#eceeef',
+                    text: 'Thumbnail'
+                });
+        </script>
+
+
     </body>
 </html>

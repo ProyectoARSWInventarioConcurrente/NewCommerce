@@ -69,7 +69,7 @@ public class ProductServicesStub implements ProductServices {
     }
 
     @Override
-    public void eliminarUnProductoPorId(Integer idPorducto) {
+    public void eliminarUnProductoPorId(String idPorducto) {
         pPersistence.eliminarUnProductoPorId(idPorducto);
     }
 

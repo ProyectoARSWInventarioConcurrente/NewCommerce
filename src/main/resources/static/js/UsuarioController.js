@@ -37,6 +37,7 @@ function registrarUsuario() {
 function iniciarSesion() {
     axios.get('/commerceUsuario/usuarios/' + document.getElementById("inCedula").value)
             .then(function (response) {
+                console.log(response.data["contraseñaUsuario"]);
                 if (response.data["contraseñaUsuario"] === document.getElementById("inContraseña").value) {
                     this.cedulaUsuario = document.getElementById("inCedula").value;
                     console.log(this.cedulaUsuario);
