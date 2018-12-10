@@ -38,8 +38,9 @@ function iniciarSesion() {
     axios.get('/commerceUsuario/usuarios/' + document.getElementById("inCedula").value)
             .then(function (response) {
                 if (response.data["contraseñaUsuario"] === document.getElementById("inContraseña").value) {
-
-                    cedulaUsuario = document.getElementById("inCedula").value;
+                    this.cedulaUsuario = document.getElementById("inCedula").value;
+                    console.log(this.cedulaUsuario);
+                    //alert("cedula" + cedulaUsuario);
                     location.href = "panelUsuario.html";
 
                 } else {
@@ -56,9 +57,9 @@ function iniciarSesion() {
  * @returns {undefined}
  */
 function cargarUsuario() {
-    axiox.get('/commerceUsuario/usuarios/')
+    axios.get('/commerceUsuario/usuarios/')
             .then(function (response) {
-                alert(cedulaUsuario);
+                alert(this.cedulaUsuario);
                 /**alert(response.data["nombreUsuario"])
                  document.getElementById("nombreUsuario").value = response.data["nombreUsuario"];
                  document.getElementById("apellidoUsuario").value = response.data["apellidoUsuario"];
