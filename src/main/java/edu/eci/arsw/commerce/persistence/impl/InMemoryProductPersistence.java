@@ -51,7 +51,7 @@ public class InMemoryProductPersistence implements ProductPersistence {
     }
 
     @Override
-    public VariedadProducto obtenerVariedadProductoPorId(Integer idVariedadProducto) throws ProductServicesException {
+    public VariedadProducto obtenerVariedadProductoPorId(String idVariedadProducto) throws ProductServicesException {
         VariedadProducto variedadProductoARetornar = null;
         List<VariedadProducto> listaVariedadProducto = vpRepository.findAll();
         for (VariedadProducto x : listaVariedadProducto) {

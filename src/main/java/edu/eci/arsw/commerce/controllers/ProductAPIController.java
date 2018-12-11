@@ -180,7 +180,7 @@ public class ProductAPIController {
      * @return El estado de la peticion HTTP
      */
     @RequestMapping(method = RequestMethod.GET, path = {"variedades/{idVariedad}"})
-    public ResponseEntity<?> obtenerVariedadPorId(@PathVariable("idVariedad") Integer idVariedad) {
+    public ResponseEntity<?> obtenerVariedadPorId(@PathVariable("idVariedad") String idVariedad) {
         try {
             Map<String, VariedadProducto> variedades = new HashMap();
 

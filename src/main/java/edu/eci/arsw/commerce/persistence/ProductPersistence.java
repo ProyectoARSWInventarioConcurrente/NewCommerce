@@ -36,7 +36,7 @@ public interface ProductPersistence {
      * @return
      * @throws ProductServicesException
      */
-    public VariedadProducto obtenerVariedadProductoPorId(Integer idProducto) throws ProductServicesException;
+    public VariedadProducto obtenerVariedadProductoPorId(String idProducto) throws ProductServicesException;
 
     /**
      *

@@ -40,7 +40,7 @@ public interface ProductServices {
      * @return La variedad del producto
      * @throws edu.eci.arsw.commerce.services.producto.ProductServicesException
      */
-    public VariedadProducto obtenerVariedadProductoPorId(Integer idProducto) throws ProductServicesException;
+    public VariedadProducto obtenerVariedadProductoPorId(String idProducto) throws ProductServicesException;
 
     /**
      * Obtiene todos los productos que han sido registrados

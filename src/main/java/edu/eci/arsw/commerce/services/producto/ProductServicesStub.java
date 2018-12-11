@@ -34,7 +34,7 @@ public class ProductServicesStub implements ProductServices {
     }
 
     @Override
-    public VariedadProducto obtenerVariedadProductoPorId(Integer idProducto) throws ProductServicesException {
+    public VariedadProducto obtenerVariedadProductoPorId(String idProducto) throws ProductServicesException {
         return pPersistence.obtenerVariedadProductoPorId(idProducto);
     }
 
