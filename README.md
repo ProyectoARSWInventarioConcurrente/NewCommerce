@@ -1,5 +1,6 @@
 # Commerce project
 [![Heroku link](https://www.herokucdn.com/deploy/button.png)](https://commerce-project.herokuapp.com/)
+[![CircleCI](https://circleci.com/gh/PDSW-ECI/base-proyectos.svg?style=svg)](https://circleci.com/gh/ProyectoARSWInventarioConcurrente/NewCommerce)
 ## Miembros
 - Johan Camilo López Girón
 - Juan Manuel Villate Isaza
