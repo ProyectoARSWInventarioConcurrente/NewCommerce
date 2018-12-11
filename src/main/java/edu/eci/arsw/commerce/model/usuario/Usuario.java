@@ -27,9 +27,11 @@ public class Usuario {
     private Integer calificacionUsuario;
     private Double saldoUsuario;
     private String contraseñaUsuario;
+    private String imagenUsuario;
+    private String generoUsuario;
 
     public Usuario(Integer cedulaUsuario, String nombreUsuario, String apellidoUsuario, String direccionUsuario,
-            Long telefonoUsuario, Date fechaNacimiento, String correoElectronico, String contraseñaUsuario) {
+            Long telefonoUsuario, Date fechaNacimiento, String correoElectronico, String contraseñaUsuario, String imagenUsuario, String generoUsuario) {
         this.cedulaUsuario = cedulaUsuario;
         this.nombreUsuario = nombreUsuario;
         this.apellidoUsuario = apellidoUsuario;
@@ -38,10 +40,33 @@ public class Usuario {
         this.fechaNacimiento = fechaNacimiento;
         this.correoElectronico = correoElectronico;
         this.contraseñaUsuario = contraseñaUsuario;
+        this.imagenUsuario = imagenUsuario;
+        this.generoUsuario = generoUsuario;
+        
 
         calificacionUsuario = 1;
         saldoUsuario = 0.0;
     }
+
+    public String getGeneroUsuario() {
+        return generoUsuario;
+    }
+
+    public void setGeneroUsuario(String generoUsuario) {
+        this.generoUsuario = generoUsuario;
+    }
+
+    
+    
+    public String getImagenUsuario() {
+        return imagenUsuario;
+    }
+
+    public void setImagenUsuario(String imagenUsuario) {
+        this.imagenUsuario = imagenUsuario;
+    }
+    
+    
 
     public Integer getCedulaUsuario() {
         return cedulaUsuario;

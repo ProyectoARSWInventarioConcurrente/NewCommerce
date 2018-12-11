@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 
+localStorage.setItem('avatar', 'avatar' + Math.floor(Math.random() * 4) + '.png');
 
 /**
  * @param {cedulaActual} cedula del usuraio actual 
@@ -79,6 +80,14 @@ function verificarSesion() {
  * @returns {undefined}
  */
 function registrarUsuario() {
+    
+    /**if (document.getElementById("generoUsuario").value === 'm') {
+        localStorage.setItem('avatar', 'avatar' + Math.floor(Math.random() * 4) + '.png');
+        
+    } else{
+        localStorage.setItem('avatar', 'favatar' + Math.floor(Math.random() * 4) + '.png');
+        
+    }*/
 
     axios.post('/commerceUsuario/registrarUsuario', {
         "1": {
@@ -89,13 +98,15 @@ function registrarUsuario() {
             telefonoUsuario: document.getElementById("inTelefono").value,
             fechaNacimiento: document.getElementById("inFecha").value,
             correoElectronico: document.getElementById("inCorreo").value,
-            contraseñaUsuario: document.getElementById("inContraseña").value
+            contraseñaUsuario: document.getElementById("inContraseña").value,
+            imagenUsuario: 'avatar0.png',
+            generoUsuario: document.getElementById("generoUsuario").value
         }
     })
             .then(function (response) {
                 console.log(response.data);
             })
-
+            
 }
 
 /**
@@ -134,6 +145,8 @@ function cargarUsuario() {
                 document.getElementById("nombreUsuarioActual").innerHTML = response.data["nombreUsuario"] + " " + response.data["apellidoUsuario"];
                 document.getElementById("calificacionUsuarioActual").innerHTML = " Clasificacion: " + response.data["calificacionUsuario"];
                 document.getElementById("saldoUsuarioActual").innerHTML = "Saldo: $" + response.data["saldoUsuario"] + " USD";
+                document.getElementById("avatarUsuario").innerHTML = '<img src="img/'+response.data["imagenUsuario"]+'" class="img-circle" height="80" width="80" alt="Avatar">';
+                
                 //Actualizar los productos que estan en venta
                 actualizarProductosEnVenta();
                 actualizarTransaccionesEnCurso();
@@ -162,16 +175,16 @@ function actualizarProductosEnVenta() {
                         guardarProveedoresLocalStorage(response.data[x]["idUsuario"], response.data[x]["idVProducto"]);
                         var filatr = document.createElement("tr");
                         var resultado = response.data[x]["cantidadVProducto"] * response.data[x]["precioProducto"];
-                        var idvProducto = "'"+String(response.data[x]["idVProducto"])+"'";
+                        var idvProducto = "'" + String(response.data[x]["idVProducto"]) + "'";
                         filatr.innerHTML = '<td>' + response.data[x]["nombreVProducto"] + '</td>' +
                                 '<td id="tdProveedor' + response.data[x]["idVProducto"] + '"></td>' +
                                 '<td>' + response.data[x]["cantidadVProducto"] + 'kg, ' + '</td>' +
                                 '<td>$' + response.data[x]["precioProducto"] + ' COP (Precio/Kilo)</td>' +
                                 '<td><b>$' + resultado + ' COP</b></td>' +
                                 '<td>' + response.data[x]["fechaCosecha"] + '</td>' +
-                                '<td> <button onclick="crearTransaccion('+ idvProducto +
-                                ','+ localStorage.getItem('Actual') + 
-                                ','+ response.data[x]["idUsuario"] +
+                                '<td> <button onclick="crearTransaccion(' + idvProducto +
+                                ',' + localStorage.getItem('Actual') +
+                                ',' + response.data[x]["idUsuario"] +
                                 ')" class="btn btn-primary">COMPRAR</button> </td>';
                         tbody.appendChild(filatr);
                     }
@@ -218,7 +231,7 @@ function actualizarTransaccionesEnCurso() {
                     }
                     tbodyV.appendChild(filatr);
                 }
-               
+
 
             })
 
@@ -235,7 +248,7 @@ function actualizarTransaccionesEnCurso() {
                     }
                     tbodyC.appendChild(filatr);
                 }
-                
+
 
             })
 }
@@ -280,22 +293,22 @@ function actualizarAnadirProducto() {
                     var text = document.createTextNode(response.data[x]["nombreProducto"]);
                     opt.appendChild(text);
                     selectCategoriaProducto.appendChild(opt);
-                    localStorage.setItem('reg'+response.data[x]["idProducto"], response.data[x]["nombreProducto"]);
+                    localStorage.setItem('reg' + response.data[x]["idProducto"], response.data[x]["nombreProducto"]);
                 }
             })
-    
+
 
 }
 
 
 function registrarNuevoVariedadProducto() {
-    
-    
+
+
     axios.post('/commerceProducto/registrarvproducto', {
         "1": {
             precioProducto: document.getElementById('precioProducto').value,
             fechaCosecha: document.getElementById("fechaCosecha").value,
-            nombreVProducto: localStorage.getItem('reg'+document.getElementById("selectCategoriaProducto").value) + ' ' + document.getElementById("inNombre").value,
+            nombreVProducto: localStorage.getItem('reg' + document.getElementById("selectCategoriaProducto").value) + ' ' + document.getElementById("inNombre").value,
             idProducto: document.getElementById("selectCategoriaProducto").value,
             idUsuario: localStorage.getItem('Actual'),
             cantidadVProducto: document.getElementById("cantidadProducto").value
@@ -314,9 +327,9 @@ function registrarNuevoVariedadProducto() {
  * 
  */
 function crearTransaccion(idVProducto, cedulaComprador, cedulaProveedor) {
-    alert(idVProducto +' '+ cedulaComprador +' '+ cedulaProveedor);
+    alert(idVProducto + ' ' + cedulaComprador + ' ' + cedulaProveedor);
     axios.post('/commerceTransaccion/crearTransaccion', {
-        "1": {          
+        "1": {
             cedulaComprador: cedulaComprador,
             cedulaVendedor: cedulaProveedor,
             idVProducto: idVProducto

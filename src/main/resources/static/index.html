@@ -64,6 +64,17 @@
                     <div style="display: flex; justify-content: center; align-items: center;">
                         <div class="input-group mb-3 " style="width: 30%">
                             <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon3">Genero</span>
+                            </div>
+                            <select id="generoUsuario" required class="form-control" aria-describedby="basic-addon3">
+                                <option value="m">Masculino</option>
+                                <option value="f">Femenino</option>
+                            </select> 
+                        </div>
+                    </div>
+                    <div style="display: flex; justify-content: center; align-items: center;">
+                        <div class="input-group mb-3 " style="width: 30%">
+                            <div class="input-group-prepend">
                                 <span class="input-group-text" id="basic-addon3">Cedula</span>
                             </div>
                             <input type="number" required class="form-control" id="inCedula" aria-describedby="basic-addon3">
@@ -154,11 +165,11 @@
         <script src="js/UsuarioController.js"></script>
         <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
         <script>
-                Holder.addTheme('thumb', {
-                    bg: '#55595c',
-                    fg: '#eceeef',
-                    text: 'Thumbnail'
-                });
+                    Holder.addTheme('thumb', {
+                        bg: '#55595c',
+                        fg: '#eceeef',
+                        text: 'Thumbnail'
+                    });
         </script>
 
 
