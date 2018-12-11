@@ -18,18 +18,9 @@ public interface UsuarioPersistence {
     /**
      * Este metodo permite la creacion de un nuevo usuarios
      *
-     * @param cedulaUsuario Cedula del usuario
-     * @param nombreUsuario Nombre del usuario
-     * @param apellidoUsuario Apellido del usuario
-     * @param direccionUsuario Direccion del usuario
-     * @param telefonoUsuario Telefono del usuario
-     * @param fechaNacimiento Fecha de nacimiento del usuario
-     * @param correoElectronico
-     * @param contraseñaUsuario
+     * @param ur
      */
-    public void crearUnNuevoUsuario(Integer cedulaUsuario, String nombreUsuario,
-            String apellidoUsuario, String direccionUsuario, Long telefonoUsuario,
-            Date fechaNacimiento, String correoElectronico, String contraseñaUsuario);
+    public void crearUnNuevoUsuario(Usuario ur);
 
     /**
      * Este metodo permite obtener un usuario por su cedula

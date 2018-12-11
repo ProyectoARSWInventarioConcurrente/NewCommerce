@@ -18,13 +18,10 @@ public interface ProductPersistence {
 
     /**
      *
-     * @param nombreProducto
-     * @param idProducto
-     * @param categoriaProducto
+     * @param pr
      * @throws ProductServicesException
      */
-    public void crearNuevoProducto(String nombreProducto, String categoriaProducto)
-            throws ProductServicesException;
+    public void crearNuevoProducto(Producto pr) throws ProductServicesException;
 
     /**
      *
@@ -46,6 +43,15 @@ public interface ProductPersistence {
      * @return @throws ProductServicesException
      */
     public List<Producto> obtenerTodosLosProductos() throws ProductServicesException;
+
+    /**
+     * Este metodo nos permite obtener un producto mediante su Id.
+     *
+     * @param id El id del pruoducto
+     * @return El producto que se estaba buscando con su Id.
+     * @throws edu.eci.arsw.commerce.services.producto.ProductServicesException
+     */
+    public Producto obtenerProductoPorId(String id) throws ProductServicesException;
 
     /**
      *

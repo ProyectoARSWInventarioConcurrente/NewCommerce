@@ -49,8 +49,8 @@ public class ProductServicesStub implements ProductServices {
     }
 
     @Override
-    public void crearNuevoProducto(String nombreProducto, String categoriaProducto) throws ProductServicesException {
-        pPersistence.crearNuevoProducto(nombreProducto, categoriaProducto);
+    public void crearNuevoProducto(Producto pr) throws ProductServicesException {
+        pPersistence.crearNuevoProducto(pr);
     }
 
     @Override
@@ -76,6 +76,11 @@ public class ProductServicesStub implements ProductServices {
     @Override
     public void eliminarUnaVariedadDeProductoPorId(Integer idVProducto) {
         pPersistence.eliminarUnaVariedadDeProductoPorId(idVProducto);
+    }
+
+    @Override
+    public Producto obtenerProductoPorId(String id) throws ProductServicesException {
+        return pPersistence.obtenerProductoPorId(id);
     }
 
 }

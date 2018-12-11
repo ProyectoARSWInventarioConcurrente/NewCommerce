@@ -20,24 +20,16 @@ public interface ProductServices {
     /**
      * Crear un nuevo producto dado sus atributos
      *
-     * @param nombreProducto Nombre que tendra el producto
-     * @param idProducto Id que tendra el producto
-     * @param categoriaProducto Categoria a la cual pertencera el producto
-     * @throws com.arsw.project.commerce.services.ProductServicesException
+     * @param pr
+     * @throws edu.eci.arsw.commerce.services.producto.ProductServicesException
      */
-    public void crearNuevoProducto(String nombreProducto, String categoriaProducto)
-            throws ProductServicesException;
+    public void crearNuevoProducto(Producto pr) throws ProductServicesException;
 
     /**
      * Crear una nueva variedad de producto dado sus atributos que lo componen
      *
-     * @param nombreProducto Nombre del producto al cual pertenece
-     * @param idProducto Id del producto al cual pertenece
-     * @param categoriaProducto Categoria del producto al cual pertenece
-     * @param idVProducto Id que tendra la variedad del producto
-     * @param nombreVProducto Nombre que tendra la variedad del producto
-     * @param idUsuario Id del cliente al cual pertenece el producto
-     * @throws com.arsw.project.commerce.services.ProductServicesException
+     * @param vpr
+     * @throws edu.eci.arsw.commerce.services.producto.ProductServicesException
      */
     public void crearNuevaVariedadDeProducto(VariedadProducto vpr) throws ProductServicesException;
 
@@ -46,7 +38,7 @@ public interface ProductServices {
      *
      * @param idProducto Id de la variedad del producto
      * @return La variedad del producto
-     * @throws com.arsw.project.commerce.services.ProductServicesException
+     * @throws edu.eci.arsw.commerce.services.producto.ProductServicesException
      */
     public VariedadProducto obtenerVariedadProductoPorId(Integer idProducto) throws ProductServicesException;
 
@@ -54,9 +46,18 @@ public interface ProductServices {
      * Obtiene todos los productos que han sido registrados
      *
      * @return Lista con todos los productos
-     * @throws com.arsw.project.commerce.services.ProductServicesException
+     * @throws edu.eci.arsw.commerce.services.producto.ProductServicesException
      */
     public List<Producto> obtenerTodosLosProductos() throws ProductServicesException;
+
+    /**
+     * Este metodo nos permite obtener un producto mediante su Id.
+     *
+     * @param id El id del pruoducto
+     * @return El producto que se estaba buscando con su Id.
+     * @throws edu.eci.arsw.commerce.services.producto.ProductServicesException
+     */
+    public Producto obtenerProductoPorId(String id) throws ProductServicesException;
 
     /**
      * Obtiene todas las variedades que han sido registradas
@@ -71,7 +72,7 @@ public interface ProductServices {
      *
      * @param idProducto Id del producto al cual pertenecen las variedades
      * @return Lista con las variedades
-     * @throws com.arsw.project.commerce.services.ProductServicesException
+     * @throws edu.eci.arsw.commerce.services.producto.ProductServicesException
      */
     public List<VariedadProducto> obtenerTodaLaVariedadDeProductosPorIdProducto(Integer idProducto) throws ProductServicesException;
 

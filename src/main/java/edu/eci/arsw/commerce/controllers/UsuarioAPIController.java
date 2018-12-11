@@ -114,9 +114,7 @@ public class UsuarioAPIController {
 
             Usuario ur = result.get(nameKeys[0]);
 
-            uServices.crearUnNuevoUsuario(ur.getCedulaUsuario(), ur.getNombreUsuario(),
-                    ur.getApellidoUsuario(), ur.getDireccionUsuario(), ur.getTelefonoUsuario(),
-                    ur.getFechaNacimiento(), ur.getCorreoElectronico(), ur.getContraseñaUsuario());
+            uServices.crearUnNuevoUsuario(ur);
 
             return new ResponseEntity<>(HttpStatus.CREATED);
         } catch (Exception ex) {
