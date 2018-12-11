@@ -30,10 +30,11 @@
         </div>
 
 
-
+        <a href="panelUsuario.html"><button type="button"  class="btn btn-warning">< Volver al Panel de usuario</button></a>
         <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
             <h1 class="display-4" id="regTitle">Añadir Producto</h1>
             <p class="lead" id="regPhrase">Añade cualquier producto, llenando todos los campos requeridos</p>
+            <p class="lead" id="regPhrase">Aca encontraras los precios por kilo al dia de hoy <a href="https://www.corabastos.com.co/sitio/historicoApp2/reportes/prueba.php" target="_blank">Corabastos</a></p>
         </div>
         <form onsubmit="registrarNuevoVariedadProducto(); return false"  id="regForm">
             <div style="display: flex; justify-content: center; align-items: center;">
@@ -58,7 +59,7 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="basic-addon3" >Nombre Producto</span>
                     </div>
-                    <input type="text" required class="form-control" id="inNombre" aria-describedby="basic-addon3">
+                    <input type="text" required class="form-control" id="inNombre" aria-describedby="basic-addon3" placeholder="solo nombre (pastusa)">
                 </div>
             </div>
             <div style="display: flex; justify-content: center; align-items: center;">

@@ -12,19 +12,6 @@
 function iniciarLocalStorageUsuario(cedulaActual) {
 
     localStorage.setItem('Actual', cedulaActual);
-    alert(localStorage.getItem('Actual'));
-    //localStorage.removeItem('key');
-    //localStorage.clear();
-}
-
-/**
- * @param {producto} producto  
- * @returns {undefined}
- */
-function iniciarLocalStorageProducto(producto) {
-
-    localStorage.setItem('Actual', producto);
-    alert(localStorage.getItem('Actual'));
     //localStorage.removeItem('key');
     //localStorage.clear();
 }
@@ -42,39 +29,25 @@ function iniciarLocalStorageTransaccion(transaccion) {
 }
 
 /**
- * @param {idProducto} idProducto del producto
+ * @param {idProducto} idProducto de la variedad producto
+ * @param {idVProducto} idVProducto del producto a vender
  * @returns {undefined}
  */
-function guardarProductoLocalStorage(idProducto) {
-    axios.get('/commerceProducto/producto/' + idProducto)
-            .then(function (response) {
-                alert("producto encontrado");
-            })
-            .catch(function (error) {
-                alert("error, producto no encontrado");
-            })
-
-    localStorage.setItem('Actual', transaccion);
-    alert(localStorage.getItem('Actual'));
-    //localStorage.removeItem('key');
-    //localStorage.clear();
+function guardarProductoLocalStorage(idProducto, idVProducto) {
+    localStorage.setItem('A0' + idVProducto, idProducto);
+    //alert(localStorage.getItem('A0'+idVProducto));
 }
 
 /**
  * @param {idUsuario} idUsuario del proveedor
+ * @param {idVProducto} idVProducto del producto a vender
  * @returns {undefined}
  */
-function guardarUsuarioProveedorLocalStorage(idUsuario) {
-    axios.get('/commerceUsuario/usuarios/' + idUsuario)
-            .then(function (response) {
-                
-                localStorage.setItem('nombreProveedor', response.data["nombreUsuario"]);
-                localStorage.setItem('apellidoProveedor', response.data["apellidoUsuario"]);
-                localStorage.setItem('calificacionProveedor', response.data["calificacionUsuario"]);
-            })
-            .catch(function (error) {
-                alert("eroor, consulta proveedor fallida");
-            })
+function guardarProveedoresLocalStorage(idUsuario, idVProducto) {
+
+    localStorage.setItem(idVProducto, idUsuario);
+    //alert('IdProducto: ' + localStorage.getItem(idVProducto));
+
 
 }
 
@@ -163,7 +136,7 @@ function cargarUsuario() {
                 document.getElementById("saldoUsuarioActual").innerHTML = "Saldo: $" + response.data["saldoUsuario"] + " USD";
                 //Actualizar los productos que estan en venta
                 actualizarProductosEnVenta();
-                //actualizarTransaccionesEnCurso();
+                actualizarTransaccionesEnCurso();
                 //actualizarAnadirProducto();
 
                 //actualizarHistorialDeTransacciones(response.data["cedulaUsuario"]);
@@ -174,32 +147,57 @@ function cargarUsuario() {
 
 }
 
-function crearTransaccion(){
-    
-}
+
 
 function actualizarProductosEnVenta() {
 
     var tbody = document.getElementById("tbodyTablaProducto");
     axios.get('/commerceProducto/variedades')
             .then(function (response) {
-                for (var x in response.data) {
-                    //guardarProductoLocalStorage(response.data[x]["idProducto"]);
-                    guardarUsuarioProveedorLocalStorage(response.data[x]["idUsuario"]);
-                    var filatr = document.createElement("tr");
-                    var resultado = response.data[x]["cantidadVProducto"] * response.data[x]["precioProducto"];
 
-                    filatr.innerHTML = '<td>' + response.data[x]["nombreVProducto"] + '</td>' +
-                            '<td>' + localStorage.getItem('nombreProveedor') + ' ' + localStorage.getItem('apellidoProveedor') + '<br>' + localStorage.getItem('calificacionProveedor') + '</td>' +
-                            '<td>' + response.data[x]["cantidadVProducto"] + 'kg, ' + '</td>' +
-                            '<td>$' + response.data[x]["precioProducto"] + ' COP (Precio/Kilo)</td>' +
-                            '<td>$' + resultado + ' COP</td>' +
-                            '<td>' + response.data[x]["fechaCosecha"] + '</td>' +
-                            '<td> <button onclick="crearTransaccion()" class="btn btn-primary">COMPRAR</button> </td>';
-                    tbody.appendChild(filatr);
+                for (var x in response.data) {
+                    if (response.data[x]["idUsuario"] !== parseInt(localStorage.getItem('Actual'))) {
+
+                        guardarProductoLocalStorage(response.data[x]["idProducto"], response.data[x]["idVProducto"]);
+                        guardarProveedoresLocalStorage(response.data[x]["idUsuario"], response.data[x]["idVProducto"]);
+                        var filatr = document.createElement("tr");
+                        var resultado = response.data[x]["cantidadVProducto"] * response.data[x]["precioProducto"];
+                        var idvProducto = "'"+String(response.data[x]["idVProducto"])+"'";
+                        filatr.innerHTML = '<td>' + response.data[x]["nombreVProducto"] + '</td>' +
+                                '<td id="tdProveedor' + response.data[x]["idVProducto"] + '"></td>' +
+                                '<td>' + response.data[x]["cantidadVProducto"] + 'kg, ' + '</td>' +
+                                '<td>$' + response.data[x]["precioProducto"] + ' COP (Precio/Kilo)</td>' +
+                                '<td><b>$' + resultado + ' COP</b></td>' +
+                                '<td>' + response.data[x]["fechaCosecha"] + '</td>' +
+                                '<td> <button onclick="crearTransaccion('+ idvProducto +
+                                ','+ localStorage.getItem('Actual') + 
+                                ','+ response.data[x]["idUsuario"] +
+                                ')" class="btn btn-primary">COMPRAR</button> </td>';
+                        tbody.appendChild(filatr);
+                    }
+                }
+
+                for (var i = 0; i < localStorage.length - 1; i++) {
+                    agregarProveedor(i);
                 }
 
             })
+}
+
+function agregarProveedor(x) {
+
+    var producto = localStorage.key(x);
+    if (String(producto).substr(0, 4) === '5c0f') {
+        //alert(localStorage.getItem(producto));
+        axios.get('/commerceUsuario/usuarios/' + localStorage.getItem(producto))
+                .then(function (response) {
+
+                    document.getElementById('tdProveedor' + localStorage.key(x)).innerHTML = response.data["nombreUsuario"] + ' ' +
+                            response.data["apellidoUsuario"] + ' ' +
+                            '<br> Calificacion' + response.data["calificacionUsuario"];
+
+                })
+    }
 }
 
 function actualizarTransaccionesEnCurso() {
@@ -220,14 +218,12 @@ function actualizarTransaccionesEnCurso() {
                     }
                     tbodyV.appendChild(filatr);
                 }
-                if (ventasNull === undefined) {
-                    tbodyV.innerHTML = "<tr><td>no hay ventas, en curso</td></tr>";
-                }
+               
 
             })
 
     var tbodyC = document.getElementById("tbodyTablaTransaccionesEnCursoC");
-    axios.get('/commerceTransaccion/transacciones/comprador/' + cedula)
+    axios.get('/commerceTransaccion/transacciones/comprador/' + localStorage.getItem('Actual'))
             .then(function (response) {
                 var comprasNull = response.data[0];
                 for (var x in response.data) {
@@ -239,9 +235,7 @@ function actualizarTransaccionesEnCurso() {
                     }
                     tbodyC.appendChild(filatr);
                 }
-                if (comprasNull === undefined) {
-                    tbodyC.innerHTML = "<tr><td>no hay Compras en curso</td></tr>";
-                }
+                
 
             })
 }
@@ -286,20 +280,22 @@ function actualizarAnadirProducto() {
                     var text = document.createTextNode(response.data[x]["nombreProducto"]);
                     opt.appendChild(text);
                     selectCategoriaProducto.appendChild(opt);
+                    localStorage.setItem('reg'+response.data[x]["idProducto"], response.data[x]["nombreProducto"]);
                 }
-
-
-
             })
+    
 
 }
 
+
 function registrarNuevoVariedadProducto() {
+    
+    
     axios.post('/commerceProducto/registrarvproducto', {
         "1": {
             precioProducto: document.getElementById('precioProducto').value,
             fechaCosecha: document.getElementById("fechaCosecha").value,
-            nombreVProducto: document.getElementById("inNombre").value,
+            nombreVProducto: localStorage.getItem('reg'+document.getElementById("selectCategoriaProducto").value) + ' ' + document.getElementById("inNombre").value,
             idProducto: document.getElementById("selectCategoriaProducto").value,
             idUsuario: localStorage.getItem('Actual'),
             cantidadVProducto: document.getElementById("cantidadProducto").value
@@ -314,7 +310,19 @@ function registrarNuevoVariedadProducto() {
 
 
 /* 
- * Funciones para controlador de div
+ * Funciones para controlador ransacciones
  * 
  */
-
+function crearTransaccion(idVProducto, cedulaComprador, cedulaProveedor) {
+    alert(idVProducto +' '+ cedulaComprador +' '+ cedulaProveedor);
+    axios.post('/commerceTransaccion/crearTransaccion', {
+        "1": {          
+            cedulaComprador: cedulaComprador,
+            cedulaVendedor: cedulaProveedor,
+            idVProducto: idVProducto
+        }
+    })
+            .then(function (response) {
+                console.log(response.data);
+            })
+}
