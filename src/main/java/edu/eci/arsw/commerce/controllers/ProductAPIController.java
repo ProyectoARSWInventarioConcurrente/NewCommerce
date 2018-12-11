@@ -285,7 +285,7 @@ public class ProductAPIController {
      * @return
      */
     @RequestMapping(method = RequestMethod.DELETE, path = {"eliminarVProducto/{idVProducto}"})
-    public ResponseEntity<?> eliminarVariedadProductoPorId(@PathVariable("idVProducto") Integer idVProducto) {
+    public ResponseEntity<?> eliminarVariedadProductoPorId(@PathVariable("idVProducto") String idVProducto) {
         try {
             prServices.eliminarUnaVariedadDeProductoPorId(idVProducto);
 

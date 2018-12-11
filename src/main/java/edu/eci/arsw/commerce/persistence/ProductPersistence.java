@@ -86,6 +86,6 @@ public interface ProductPersistence {
      *
      * @param idVProducto El id de la variedad del producto
      */
-    public void eliminarUnaVariedadDeProductoPorId(Integer idVProducto);
+    public void eliminarUnaVariedadDeProductoPorId(String idVProducto);
 
 }

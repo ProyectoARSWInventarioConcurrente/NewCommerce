@@ -116,7 +116,7 @@ public class InMemoryProductPersistence implements ProductPersistence {
     }
 
     @Override
-    public void eliminarUnaVariedadDeProductoPorId(Integer idVProducto) {
+    public void eliminarUnaVariedadDeProductoPorId(String idVProducto) {
         try {
             VariedadProducto vProductoAEliminar = vpRepository.findByidVProducto(idVProducto);
             vpRepository.delete(vProductoAEliminar);
