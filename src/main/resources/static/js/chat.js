@@ -19,10 +19,10 @@ var username = null;
     '#ffc107', '#ff85af', '#FF9800', '#39bbb0'
 ];
  function connect(event) {
-    username = "Mario";
+    username = document.querySelector('#name').value.trim();
      if(username) {
-        //usernamePage.classList.add('hidden');
-        //chatPage.classList.remove('hidden');
+        usernamePage.classList.add('hidden');
+        chatPage.classList.remove('hidden');
          var socket = new SockJS('/stompendpoint');
         stompClient = Stomp.over(socket);
          stompClient.connect({}, onConnected, onError);
