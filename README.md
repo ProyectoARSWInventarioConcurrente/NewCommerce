@@ -1,6 +1,7 @@
 # Commerce project
-[![Heroku link](https://www.herokucdn.com/deploy/button.png)](https://commerce-project.herokuapp.com/)
-[![CircleCI](https://circleci.com/gh/PDSW-ECI/base-proyectos.svg?style=svg)](https://circleci.com/gh/ProyectoARSWInventarioConcurrente/NewCommerce)
+[![Heroku link](https://www.herokucdn.com/deploy/button.png)](https://commerce-project.herokuapp.com/)<br>
+[![CircleCI](https://circleci.com/gh/PDSW-ECI/base-proyectos.svg?style=svg)](https://circleci.com/gh/ProyectoARSWInventarioConcurrente/NewCommerce)<br>
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/2099241b5b4649ec829c5e38b637ec67)](https://www.codacy.com/app/Camilo1997/NewCommerce?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=ProyectoARSWInventarioConcurrente/NewCommerce&amp;utm_campaign=Badge_Grade)
 ## Miembros
 - Johan Camilo López Girón
 - Juan Manuel Villate Isaza
