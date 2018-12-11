@@ -19,7 +19,7 @@ public interface VariedadProductoRepository extends MongoRepository<VariedadProd
      * @param idVProducto
      * @return
      */
-    public VariedadProducto findByidVProducto(Integer idVProducto);
+    public VariedadProducto findByidVProducto(String idVProducto);
 
     /**
      *

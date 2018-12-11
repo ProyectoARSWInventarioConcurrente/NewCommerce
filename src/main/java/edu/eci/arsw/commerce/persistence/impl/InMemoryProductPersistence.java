@@ -52,14 +52,12 @@ public class InMemoryProductPersistence implements ProductPersistence {
 
     @Override
     public VariedadProducto obtenerVariedadProductoPorId(String idVariedadProducto) throws ProductServicesException {
-        VariedadProducto variedadProductoARetornar = null;
-        List<VariedadProducto> listaVariedadProducto = vpRepository.findAll();
-        for (VariedadProducto x : listaVariedadProducto) {
-            if (x.getIdVProducto().equals(idVariedadProducto)) {
-                variedadProductoARetornar = x;
-            }
+        try {
+            return vpRepository.findByidVProducto(idVariedadProducto);
+        } catch (Exception ex) {
+            System.out.println("No se ha podido retornar la variedad de producto con id: " + idVariedadProducto);
+            return null;
         }
-        return variedadProductoARetornar;
     }
 
     @Override
