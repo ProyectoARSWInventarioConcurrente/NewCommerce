@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 
+var cedulaUsuarioActual;
 
 /**
  * @param {cedulaActual} cedula del usuraio actual 
@@ -127,8 +128,10 @@ function cargarUsuario() {
                 document.getElementById("calificacionUsuarioActual").innerHTML = " Clasificacion: " + response.data["calificacionUsuario"];
                 document.getElementById("saldoUsuarioActual").innerHTML = "Saldo: $" + response.data["saldoUsuario"] + " USD";
                 actualizarProductosEnVenta();
+
                 actualizarTransaccionesEnCurso();
                 //actualizarAnadirProducto();
+
                 //actualizarHistorialDeTransacciones(response.data["cedulaUsuario"]);
             })
             .catch(function (error) {
@@ -136,6 +139,18 @@ function cargarUsuario() {
                 location.href = "index.html";
             })
 
+}
+
+function obtenerCedulaUsuarioActual() {
+    axios.get('/commerceUsuario/cedulaUsuarioActual')
+            .then(function (response) {
+                cedulaUsuarioActual = response.data;
+                alert(cedulaUsuarioActual)
+                //alert(" funcion obtenerCedula actual: " + cedulaUsuarioActual)
+            })
+            .catch(function (error) {
+                alert("No se pudo obtener cedula actual");
+            })
 }
 
 
@@ -230,19 +245,26 @@ function actualizarHistorialDeTransacciones() {
  */
 
 function actualizarAnadirProducto() {
+
     document.getElementById("cedulaUsuarioActual").innerHTML = localStorage.getItem('Actual');
+
     axios.get('/commerceProducto/productos')
             .then(function (response) {
                 var selectCategoriaProducto = document.getElementById("selectCategoriaProducto");
                 for (var x in response.data) {
-                    alert(response.data[x]["nombreProducto"]);
+                    //alert(response.data[x]["nombreProducto"]);
                     var opt = document.createElement("option");
                     opt.setAttribute("value", response.data[x]["idProducto"]);
                     var text = document.createTextNode(response.data[x]["nombreProducto"]);
                     opt.appendChild(text);
-                    alert(opt);
+
 
                     selectCategoriaProducto.appendChild(opt);
+
                 }
+                
+
+
             })
+    
 }
