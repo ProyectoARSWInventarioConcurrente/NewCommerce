@@ -25,25 +25,21 @@ public class InMemoryUsuarioPersistence implements UsuarioPersistence {
     UsuarioRepository uRepository;
 
     @Override
-    public void crearUnNuevoUsuario(Integer cedulaUsuario, String nombreUsuario, String apellidoUsuario,
-            String direccionUsuario, Long telefonoUsuario, Date fechaNacimiento,
-            String correoElectronico, String contraseñaUsuario) {
+    public void crearUnNuevoUsuario(Usuario ur) {
         try {
-            Usuario nuevoUsuario = new Usuario(cedulaUsuario, nombreUsuario, apellidoUsuario,
-                    direccionUsuario, telefonoUsuario, fechaNacimiento, correoElectronico, contraseñaUsuario);
 
             Boolean existeUsuario = false;
             List<Usuario> listaUsuario = new ArrayList<>();
             listaUsuario = obtenerTodosLosUsuarios();
 
             for (Usuario x : listaUsuario) {
-                if (x.getCedulaUsuario().equals(cedulaUsuario)) {
+                if (x.getCedulaUsuario().equals(ur.getCedulaUsuario())) {
                     existeUsuario = true;
                 }
             }
 
             if (!existeUsuario) {
-                uRepository.save(nuevoUsuario);
+                uRepository.save(ur);
             } else {
                 System.out.println("Este usuario ya existe");
             }

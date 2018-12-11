@@ -15,10 +15,12 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 public interface ProductoRepository extends MongoRepository<Producto, String> {
 
     /**
+     * Este metodo nos permite obtener un producto desde la base de datos
+     * MongoDB.
      *
-     * @param idProducto
-     * @return
+     * @param idProducto El id del producto que se quiere obtener.
+     * @return El producto que se esta buscando.
      */
-    public Producto findByidProducto(Integer idProducto);
+    public Producto findByidProducto(String idProducto);
 
 }

@@ -33,11 +33,9 @@ public class InMemoryProductPersistence implements ProductPersistence {
     }
 
     @Override
-    public void crearNuevoProducto(String nombreProducto, String categoriaProducto) throws ProductServicesException {
+    public void crearNuevoProducto(Producto pr) throws ProductServicesException {
         try {
-            Producto nuevoProducto = new Producto(nombreProducto, categoriaProducto);
-
-            pRepository.save(nuevoProducto);
+            pRepository.save(pr);
         } catch (Exception e) {
             System.out.println("No se ha podido crear el producto");
         }
@@ -126,6 +124,16 @@ public class InMemoryProductPersistence implements ProductPersistence {
             vpRepository.delete(vProductoAEliminar);
         } catch (Exception ex) {
             System.out.println("Error al tratar de eliminar la variedad de producto con id: " + idVProducto);
+        }
+    }
+
+    @Override
+    public Producto obtenerProductoPorId(String id) throws ProductServicesException {
+        try {
+            return pRepository.findByidProducto(id);
+        } catch (Exception ex) {
+            System.out.println("No se ha podido retornar el producto con id: " + id);
+            return null;
         }
     }
 

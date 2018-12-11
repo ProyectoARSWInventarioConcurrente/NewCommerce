@@ -23,11 +23,8 @@ public class UsuarioServicesStub implements UsuarioServices {
     UsuarioPersistence uPersistence;
 
     @Override
-    public void crearUnNuevoUsuario(Integer cedulaUsuario, String nombreUsuario, String apellidoUsuario,
-            String direccionUsuario, Long telefonoUsuario, Date fechaNacimiento,
-            String correoElectronico, String contraseñaUsuario) {
-        uPersistence.crearUnNuevoUsuario(cedulaUsuario, nombreUsuario, apellidoUsuario,
-                direccionUsuario, telefonoUsuario, fechaNacimiento, correoElectronico, contraseñaUsuario);
+    public void crearUnNuevoUsuario(Usuario ur) {
+        uPersistence.crearUnNuevoUsuario(ur);
     }
 
     @Override

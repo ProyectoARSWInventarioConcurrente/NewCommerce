@@ -123,6 +123,29 @@ public class ProductAPIController {
     }
 
     /**
+     * Este metodo nos permite obtener mediante una peticion GET un producto que
+     * este registrado en la aplicacion.
+     *
+     * @param idProducto El id del producto que se quiere obtener.
+     * @return El producto que se encuentra con el Id proporcionado.
+     */
+    @RequestMapping(method = RequestMethod.GET, path = "/producto/{idProducto}")
+    public ResponseEntity<?> obtenerProductoPorId(@PathVariable("idProducto") String idProducto) {
+        try {
+            Map<String, Producto> producto = new HashMap();
+
+            producto.put(idProducto, prServices.obtenerProductoPorId(idProducto));
+
+            String codeToJson = new Gson().toJson(producto);
+
+            return new ResponseEntity<>(codeToJson, HttpStatus.ACCEPTED);
+        } catch (Exception e) {
+            Logger.getLogger(ProductAPIController.class.getName()).log(Level.SEVERE, null, e);
+            return new ResponseEntity<>("No se ha podido retornar el producto", HttpStatus.NOT_FOUND);
+        }
+    }
+
+    /**
      * Esta funcion permite obtener todas las variedades que tiene un producto
      * mediante su Id
      *
@@ -198,7 +221,7 @@ public class ProductAPIController {
 
             Producto pr = result.get(nameKeys[0]);
 
-            prServices.crearNuevoProducto(pr.getNombreProducto(), pr.getCategoriaProducto());
+            prServices.crearNuevoProducto(pr);
 
             return new ResponseEntity<>(HttpStatus.CREATED);
         } catch (Exception ex) {
