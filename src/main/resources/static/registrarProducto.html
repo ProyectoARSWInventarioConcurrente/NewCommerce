@@ -35,13 +35,13 @@
             <h1 class="display-4" id="regTitle">Añadir Producto</h1>
             <p class="lead" id="regPhrase">Añade cualquier producto, llenando todos los campos requeridos</p>
         </div>
-        <form onsubmit="registrarProducto(); return false"  id="regForm">
+        <form onsubmit="registrarNuevoVariedadProducto()"  id="regForm">
             <div style="display: flex; justify-content: center; align-items: center;">
                 <div class="input-group mb-3 " style="width: 30%">
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="basic-addon3">Cedula</span>
                     </div>
-                    <input type="number" required class="form-control" id="cedulaUsuarioActual" aria-describedby="basic-addon3" disabled>
+                    <text id="cedulaUsuarioActual" required class="form-control" aria-describedby="basic-addon3">
                 </div>
             </div>
             
@@ -86,15 +86,7 @@
                 </div>
             </div>
 
-            <div style="display: flex; justify-content: center; align-items: center;">
-                <div class="input-group mb-3 " style="width: 30%">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text" id="basic-addon3" >Fecha Vencimiento</span>
-                    </div>
-                    <input type="date" required class="form-control" id="fechaVencimiento" aria-describedby="basic-addon3">
-                </div>
-            </div>
-
+            
             <div style="display: flex; justify-content: center; align-items: center;">
                 <button type="submit" class="btn btn-secondary" style="width: 30%">Añadir Producto</button>
             </div>

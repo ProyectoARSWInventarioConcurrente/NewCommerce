@@ -20,12 +20,12 @@ public class VariedadProducto {
     @Id
     public String idVProducto;
 
-    private Integer precioProducto;
+    private Double precioProducto;
     private Date fechaCosecha;
     private String nombreVProducto;
-    private Integer idProducto;
+    private String idProducto;
     private Integer idUsuario;
-    private Integer cantidadVProducto;
+    private Double cantidadVProducto;
 
     /**
      * Creacion de la variedad del producto dado cada uno de sus atributos el
@@ -37,22 +37,39 @@ public class VariedadProducto {
      * @param nombreVProducto Nombre de la variedad del producto
      * @param idUsuario Id del usuario al cual pertenece el producto
      */
-    public VariedadProducto(Integer idProducto, String nombreVProducto,
-            Integer idUsuario, Integer precioProducto, Integer cantidadVProducto,
+    public VariedadProducto(String idProducto, String nombreVProducto,
+            Integer idUsuario, Double precioProducto, Double cantidadVProducto,
             Date fechaCosecha) {
         this.idProducto = idProducto;
         this.nombreVProducto = nombreVProducto;
         this.idUsuario = idUsuario;
         this.precioProducto = precioProducto;
         this.cantidadVProducto = cantidadVProducto;
+        this.fechaCosecha = fechaCosecha;
     }
 
-    public Integer getPrecioProducto() {
+    public Double getPrecioProducto() {
         return precioProducto;
     }
 
-    public void setPrecioProducto(Integer precioProducto) {
+    public void setPrecioProducto(Double precioProducto) {
         this.precioProducto = precioProducto;
+    }
+
+    public Date getFechaCosecha() {
+        return fechaCosecha;
+    }
+
+    public void setFechaCosecha(Date fechaCosecha) {
+        this.fechaCosecha = fechaCosecha;
+    }
+
+    public Double getCantidadVProducto() {
+        return cantidadVProducto;
+    }
+
+    public void setCantidadVProducto(Double cantidadVProducto) {
+        this.cantidadVProducto = cantidadVProducto;
     }
 
     public String getNombreVProducto() {
@@ -71,19 +88,11 @@ public class VariedadProducto {
         this.idVProducto = idProducto;
     }
 
-    public Integer getCantidadVProducto() {
-        return cantidadVProducto;
-    }
-
-    public void setCantidadVProducto(Integer cantidadVProducto) {
-        this.cantidadVProducto = cantidadVProducto;
-    }
-
-    public Integer getIdProducto() {
+    public String getIdProducto() {
         return idProducto;
     }
 
-    public void setIdProducto(Integer idProducto) {
+    public void setIdProducto(String idProducto) {
         this.idProducto = idProducto;
     }
 
