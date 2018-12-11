@@ -36,7 +36,7 @@ public interface ProductPersistence {
      * @return
      * @throws ProductServicesException
      */
-    public VariedadProducto obtenerVariedadProductoPorId(Integer idProducto) throws ProductServicesException;
+    public VariedadProducto obtenerVariedadProductoPorId(String idProducto) throws ProductServicesException;
 
     /**
      *
@@ -86,6 +86,6 @@ public interface ProductPersistence {
      *
      * @param idVProducto El id de la variedad del producto
      */
-    public void eliminarUnaVariedadDeProductoPorId(Integer idVProducto);
+    public void eliminarUnaVariedadDeProductoPorId(String idVProducto);
 
 }

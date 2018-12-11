@@ -179,8 +179,8 @@ public class ProductAPIController {
      * @param idVariedad El id de la variedad que se quiere retornar.
      * @return El estado de la peticion HTTP
      */
-    @RequestMapping(method = RequestMethod.GET, path = {"variedades/{idVariedad}"})
-    public ResponseEntity<?> obtenerVariedadPorId(@PathVariable("idVariedad") Integer idVariedad) {
+    @RequestMapping(method = RequestMethod.GET, path = {"variedad/{idVariedad}"})
+    public ResponseEntity<?> obtenerVariedadPorId(@PathVariable("idVariedad") String idVariedad) {
         try {
             Map<String, VariedadProducto> variedades = new HashMap();
 
@@ -285,7 +285,7 @@ public class ProductAPIController {
      * @return
      */
     @RequestMapping(method = RequestMethod.DELETE, path = {"eliminarVProducto/{idVProducto}"})
-    public ResponseEntity<?> eliminarVariedadProductoPorId(@PathVariable("idVProducto") Integer idVProducto) {
+    public ResponseEntity<?> eliminarVariedadProductoPorId(@PathVariable("idVProducto") String idVProducto) {
         try {
             prServices.eliminarUnaVariedadDeProductoPorId(idVProducto);
 

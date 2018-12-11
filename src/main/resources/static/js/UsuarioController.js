@@ -41,6 +41,42 @@ function iniciarLocalStorageTransaccion(transaccion) {
     //localStorage.clear();
 }
 
+/**
+ * @param {idProducto} idProducto del producto
+ * @returns {undefined}
+ */
+function guardarProductoLocalStorage(idProducto) {
+    axios.get('/commerceProducto/producto/' + idProducto)
+            .then(function (response) {
+                alert("producto encontrado");
+            })
+            .catch(function (error) {
+                alert("error, producto no encontrado");
+            })
+
+    localStorage.setItem('Actual', transaccion);
+    alert(localStorage.getItem('Actual'));
+    //localStorage.removeItem('key');
+    //localStorage.clear();
+}
+
+/**
+ * @param {idUsuario} idUsuario del proveedor
+ * @returns {undefined}
+ */
+function guardarUsuarioProveedorLocalStorage(idUsuario) {
+    axios.get('/commerceUsuario/usuarios/' + idUsuario)
+            .then(function (response) {
+                
+                localStorage.setItem('nombreProveedor', response.data["nombreUsuario"]);
+                localStorage.setItem('apellidoProveedor', response.data["apellidoUsuario"]);
+                localStorage.setItem('calificacionProveedor', response.data["calificacionUsuario"]);
+            })
+            .catch(function (error) {
+                alert("eroor, consulta proveedor fallida");
+            })
+
+}
 
 
 
@@ -127,7 +163,6 @@ function cargarUsuario() {
                 document.getElementById("saldoUsuarioActual").innerHTML = "Saldo: $" + response.data["saldoUsuario"] + " USD";
                 //Actualizar los productos que estan en venta
                 actualizarProductosEnVenta();
-
                 //actualizarTransaccionesEnCurso();
                 //actualizarAnadirProducto();
 
@@ -144,28 +179,23 @@ function crearTransaccion(){
 }
 
 function actualizarProductosEnVenta() {
+
     var tbody = document.getElementById("tbodyTablaProducto");
     axios.get('/commerceProducto/variedades')
             .then(function (response) {
                 for (var x in response.data) {
+                    //guardarProductoLocalStorage(response.data[x]["idProducto"]);
+                    guardarUsuarioProveedorLocalStorage(response.data[x]["idUsuario"]);
                     var filatr = document.createElement("tr");
                     var resultado = response.data[x]["cantidadVProducto"] * response.data[x]["precioProducto"];
-                    filatr.innerHTML = '<td>' + response.data[x]["nombreVProducto"] + '</td>'+
-                                    '<td>' + response.data[x]["idUsuario"] + '</td>'+
-                                    '<td>' + response.data[x]["cantidadVProducto"] + 'kg, ' + '</td>' +
-                                    '<td>$' + response.data[x]["precioProducto"] + ' COP (Precio/Kilo)</td>'+
-                                    '<td>$' + resultado + ' COP</td>'+
-                                    '<td> <span class="label label-primary">compra</span>  </td>'+
-                                    '<td>' + response.data[x]["fechaCosecha"] + '</td>' +
-                                    '<td> <button onclick='+crearTransaccion()+' class="btn btn-secondary">Comprar</button> </td>';
-                    
-                    
-                    /**for (var y in response.data[x]) {
-                        var columna = document.createElement("td");
-                        alert(response.data[x]["nombreVProducto"])
-                        columna.innerHTML = response.data[x][y];
-                        filatr.appendChild(columna);
-                    }*/
+
+                    filatr.innerHTML = '<td>' + response.data[x]["nombreVProducto"] + '</td>' +
+                            '<td>' + localStorage.getItem('nombreProveedor') + ' ' + localStorage.getItem('apellidoProveedor') + '<br>' + localStorage.getItem('calificacionProveedor') + '</td>' +
+                            '<td>' + response.data[x]["cantidadVProducto"] + 'kg, ' + '</td>' +
+                            '<td>$' + response.data[x]["precioProducto"] + ' COP (Precio/Kilo)</td>' +
+                            '<td>$' + resultado + ' COP</td>' +
+                            '<td>' + response.data[x]["fechaCosecha"] + '</td>' +
+                            '<td> <button onclick="crearTransaccion()" class="btn btn-primary">COMPRAR</button> </td>';
                     tbody.appendChild(filatr);
                 }
 
