@@ -42,7 +42,9 @@
                             <div class="panel-body">
                                 <h2><span id="saldoUsuarioActual" class="label label-success"></span></h2>
                                 <div class="btn-group">
+                                    <a href="añadirSaldo.html" class="btn btn-warning">AÑADIR SALDO</a>
                                     <a href="registrarProducto.html" class="btn btn-warning">VENDER</a>
+                                    
 
                                 </div>
                                 <hr>
@@ -77,30 +79,15 @@
                             <div class="tab-content">
                                 <div id="comprar" class="tab-pane fade in active">
 
-                                    <table class="table table-condensed table-hover" style="text-align:center">
-                                        <thead>
-                                            <tr>
-                                                <th>Variedad</th>
-                                                <th>Proveedor</th>
-                                                <th>Cantidad</th>
-                                                <th>Precio</th>
-                                                <th>Total</th>
-                                                <th>Fecha de Cosecha</th>
-                                                <th></th>
-                                            </tr>
-                                        </thead>
-
-                                        <tbody id="tbodyTablaProducto"></tbody>
-
-                                    </table>
+                                    <table id="TablaProducto" class="table table-condensed table-hover" style="text-align:center"></table>
                                 </div>
                                 <div id="proceso" class="tab-pane fade">
                                     
                                     <table id="tablaTransaccionesEnCurso" class="table table-condensed table-hover"></table>
-                                    <span id="sinTransacciones"></span>
+                                    
                                 </div>
                                 <div id="historial" class="tab-pane fade">
-                                    <table id="tablaHistorial"></table>
+                                    <table id="tbodyTablaHitorial" class="table table-condensed table-hover" style="text-align:center"></table>
 
                                     
                                 </div>
