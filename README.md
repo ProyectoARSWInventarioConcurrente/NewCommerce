@@ -11,18 +11,12 @@
 - Commerce ALV, un inventario concurrente el cual ofrece ventas de producto de la canasta familiar en tiempo real de manera proactiva, dinamica y segura, es una aplicacion la cual busca que la compra de productos de la canasta familiar que muchas veces tienen que ser comprados solo en almacenes de cadena y otras tiendas que ofrecen estos productos, sea de manera diferente, donde los usuarios de nuestra aplicacion se puedan convertir tanto en compradores como vendedores, donde personas que tengan sus propios productos a la venta los puedan ofrecer al precio que ellos quieran con el simple hecho de poner una oferta de venta sobre su producto y al cual diferentes usuarios que en este caso serian compradores pueden realizar ofertas para estos productos.
 Cada uno de los usuarios de Commerce ALV esta correctamente verificado, donde queremos aseurar a todos nuestros usuarios que las personas con las que van a interactuar son de completa confianza, y que las operaciones de compra y venta que se realizen estan correctamente aseguradas y soportadas por todo nuestro equipo.
 ### Conceptos generales
-#### Spring
-Spring
-#### Maven
-Maven
-#### Heroku
-Heroku
-#### MongoDB
-MongoDB
-#### Bootstrap
-Bootstrap
-#### Axios
-Axios
+- Spring: Todo
+- Maven: Todo
+- Heroku: Todo
+- MongoDB: Todo
+- Bootstrap: Todo
+- Axios: Todo
 ### Implementacion
 - Para esta aplicacion utilizamos el framework Spring el cual nos ofrece variedad de metodos e interfaces con las cuales podemos generar peticiones REST a una aplicacion web y ademmas podemos conectarnos a una base de datos NoSQL, en este caso usamos la base de datos MongoDB en la cual guardamos cada una de las entidades que usamos en este proyecto, en este caso las entidades que guardamos son producto, variedad del producto, admministrador, usuario y transaccion. Para cada una de estas entidades creamos sus respectivos modelos, servicios, persistencia y su respectiva implementacion y los controladores para realizar cada una de las peticiones REST que tendriamos que realizar dentro de la aplicacion web, para este caso utilizamos peticiones GET par obtener las entidades o informacion sobre ellas, peticion POST, la cual nos servia para crear una entidad con sus respectivos parametos, peticion DELETE la cual nos sirve para realizar acciones de administrador como lo seria eliminar algun tipo de producto o de usuario. El tipo de mensajes con la que se comunica la aplicacion web con los controladores son de tipo Json, por lo que esta implementacion de estos mensajes nos permite en un futuro hacer una extension de codigo o funcionalidades con bastante sencilles. Para la interfaz grafica de la aplicacion web utiliamos bootstrap el cual nos servia para desarrollar paginas para la aplicacion de manera amigable para el usuario y ademas paginas responsive design, para realizar acciones dentro de la aplicacion web utilizamos el lenguaje javascript, en el cual podiamos usar el lenguaje axios, el cual nos permite conectarnos al controlador desde la aplicacion web, con esta tecnologia se nos facilitaba realizar cada una de las peticiones REST que ya fueron mencionadas.
 ### Alcance
