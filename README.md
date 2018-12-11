@@ -32,7 +32,32 @@ Axios
 Para el tema de seguridad se quiere implementar la seguridad que nos ofrece SpringBoot, la cual si un usuario no esta logueado correctamente no se le da acceso a las acciones que puede realizar un usuario, al igual a los administradores, si no esta logueado correctamente no se puede realizar las acciones sin sus permisos.
 Para el tema del registro se quiere implementar la verificacion de datos personales mediante subida de archivos a la plataorma a la hora de registrarse, como cedula o soporte de direccion de residencia, esto para darle un plus de seguridad a nuestros usuarios y que las transacciones tengan un poco mas de seguridad.
 ### Pruebas
-- Todo
+- Aplicacion desplegada en Heroku.
+![](screenshots/appHeroku.png)
+- Pagina de registro.
+![](screenshots/appRegistro.png)
+- Codigo Json del usuario registrado.
+![](screenshots/apiRegistro.png)
+- Inicio de sesion para el usuario.
+![](screenshots/appInicio.png)
+- Pagina unica para el usuario que ingresa
+![](screenshots/appUsuario.png)
+- Variedades de producto que se encuentran a la venta.
+![](screenshots/appProductosVenta.png)
+- Creacion de una nueva variedad de producto para la venta.
+![](screenshots/appVariedadProducto.png)
+- Codigo Json de la variedad de producto creada.
+![](screenshots/apiVariedadProducto.png)
+- Inicio de sesion del administrador.
+![](screenshots/appInicioAdmin.png)
+- Administrador puede crear un producto.
+![](screenshots/appCrearProducto.png)
+- Codigo Json del producto creado.
+![](screenshots/apiCrearProducto.png)
+- Administrador puede eliminar un producto.
+![](screenshots/appEliminarProducto.png)
+- Podemos observar que el producto arracacha ya no existe.
+![](screenshots/apiEliminarProducto.png)
 ### Graficas
 - Todo
 ### Conclusiones
