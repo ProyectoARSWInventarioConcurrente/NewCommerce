@@ -10,14 +10,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
  *
- * @author camilo
+ * @author Oscar
  */
 @SpringBootApplication
 public class CommerceAPIDemoApplication {
-
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
         SpringApplication.run(CommerceAPIDemoApplication.class, args);
     }

@@ -139,6 +139,9 @@ function cargarUsuario() {
 
 }
 
+function crearTransaccion(){
+    
+}
 
 function actualizarProductosEnVenta() {
     var tbody = document.getElementById("tbodyTablaProducto");
@@ -154,7 +157,7 @@ function actualizarProductosEnVenta() {
                                     '<td>$' + resultado + ' COP</td>'+
                                     '<td> <span class="label label-primary">compra</span>  </td>'+
                                     '<td>' + response.data[x]["fechaCosecha"] + '</td>' +
-                                    '<td> <button onclick="crearTransaccion()" class="btn btn-secondary">Comprar</button> </td>';
+                                    '<td> <button onclick='+crearTransaccion()+' class="btn btn-secondary">Comprar</button> </td>';
                     
                     
                     /**for (var y in response.data[x]) {
@@ -284,5 +287,4 @@ function registrarNuevoVariedadProducto() {
  * Funciones para controlador de div
  * 
  */
-
 
