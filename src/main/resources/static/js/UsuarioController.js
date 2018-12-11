@@ -23,7 +23,7 @@ function iniciarLocalStorageUsuario(cedulaActual) {
 function iniciarLocalStorageTransaccion(transaccion) {
 
     localStorage.setItem('Actual', transaccion);
-    alert(localStorage.getItem('Actual'));
+    //alert(localStorage.getItem('Actual'));
     //localStorage.removeItem('key');
     //localStorage.clear();
 }
@@ -283,7 +283,7 @@ function agregarPoducto(x) {
         //alert(localStorage.getItem(producto));
         axios.get('/commerceProducto/variedad/' + String(localStorage.getItem(idProducto)))
                 .then(function (response) {
-                    alert('idProducto'+localStorage.getItem(idProducto)+' '+response.data["nombreVProducto"]);
+                    //alert('idProducto'+localStorage.getItem(idProducto)+' '+response.data["nombreVProducto"]);
                     
                     //alert(localStorage.key(x)+' '+localStorage.getItem(idProducto) +''+ response.data["nombreVProducto"]);
                     var total = response.data["precioProducto"] * response.data["cantidadVProducto"];
@@ -401,7 +401,7 @@ function registrarNuevoVariedadProducto() {
  * 
  */
 function crearTransaccion(idVProducto, cedulaComprador, cedulaProveedor) {
-    alert(idVProducto + ' ' + cedulaComprador + ' ' + cedulaProveedor);
+    //alert(idVProducto + ' ' + cedulaComprador + ' ' + cedulaProveedor);
     axios.post('/commerceTransaccion/crearTransaccion', {
         "1": {
             cedulaComprador: cedulaComprador,
