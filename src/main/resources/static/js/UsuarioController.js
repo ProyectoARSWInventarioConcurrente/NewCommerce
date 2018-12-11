@@ -6,6 +6,65 @@
 
 
 /**
+ * @param {cedulaActual} cedula del usuraio actual 
+ * @returns {undefined}
+ */
+function iniciarLocalStorageUsuario(cedulaActual) {
+    
+    localStorage.setItem('Actual', cedulaActual);
+    alert(localStorage.getItem('Actual'));
+    //localStorage.removeItem('key');
+    //localStorage.clear();
+}
+
+/**
+ * @param {producto} producto  
+ * @returns {undefined}
+ */
+function iniciarLocalStorageProducto(producto) {
+    
+    localStorage.setItem('Actual', producto);
+    alert(localStorage.getItem('Actual'));
+    //localStorage.removeItem('key');
+    //localStorage.clear();
+}
+
+/**
+ * @param {transaccion} transaccion que crusa el usuario 
+ * @returns {undefined}
+ */
+function iniciarLocalStorageTransaccion(transaccion) {
+    
+    localStorage.setItem('Actual', transaccion);
+    alert(localStorage.getItem('Actual'));
+    //localStorage.removeItem('key');
+    //localStorage.clear();
+}
+
+
+
+
+
+/**
+ * 
+ * @returns {undefined}
+ */
+function cerrarLocalStorageUsuario() {
+    
+    //localStorage.removeItem('key');
+    localStorage.clear();
+}
+
+function verificarSesion(){
+    if(localStorage.length === 0){
+        alert("Debe iniciar Sesion");
+        location.href = "panelUsuario.html";
+    } else {
+        alert("que paso");
+    }
+}
+
+/**
  * 
  * @returns {undefined}
  */
@@ -38,12 +97,7 @@ function iniciarSesion() {
             .then(function (response) {
                 console.log(response.data["contraseñaUsuario"]);
                 if (response.data["contraseñaUsuario"] === document.getElementById("inContraseña").value) {
-                    axios.post('/commerceUsuario/mantenerUsuario/' + document.getElementById("inCedula").value)
-                            .then(function (response) {
-                                console.log(response.data);
-                            })
-                    //var cedula = pedirCedulaActual();
-                    //alert("sirvio cedula: " + cedula);
+                    iniciarLocalStorageUsuario(response.data["cedulaUsuario"])
                     location.href = "panelUsuario.html";
                 } else {
                     alert("Contraseña incorrecta");
@@ -55,15 +109,11 @@ function iniciarSesion() {
 }
 
 function cerrarSesion() {
-    axios.delete('/commerceUsuario/cerrarSesion/')
-            .then(function (response) {
-                location.href = "index.html";
-            })
-            .catch(function (error) {
-                alert("Erro, no se puede cerrar sesion")
-            })
-
+    cerrarLocalStorageUsuario()
+    location.href = "index.html";
 }
+
+
 
 /**
  * 
@@ -71,14 +121,13 @@ function cerrarSesion() {
  */
 function cargarUsuario() {
 
-    axios.get('/commerceUsuario/usuarioActual/')
+    axios.get('/commerceUsuario/usuarios/' + localStorage.getItem('Actual'))
             .then(function (response) {
-                //console.log(response.data["nombreUsuario"]);
                 document.getElementById("nombreUsuarioActual").innerHTML = response.data["nombreUsuario"] + " " + response.data["apellidoUsuario"];
                 document.getElementById("calificacionUsuarioActual").innerHTML = " Clasificacion: " + response.data["calificacionUsuario"];
                 document.getElementById("saldoUsuarioActual").innerHTML = "Saldo: $" + response.data["saldoUsuario"] + " USD";
                 actualizarProductosEnVenta();
-                actualizarTransaccionesEnCurso(response.data["cedulaUsuario"]);
+                actualizarTransaccionesEnCurso();
                 //actualizarAnadirProducto();
                 //actualizarHistorialDeTransacciones(response.data["cedulaUsuario"]);
             })
@@ -107,14 +156,14 @@ function actualizarProductosEnVenta() {
             })
 }
 
-function actualizarTransaccionesEnCurso(cedula) {
+function actualizarTransaccionesEnCurso() {
     var tabla = document.getElementById("tablaTransaccionesEnCurso");
 
     tabla.innerHTML = "<thead><tr><th>Variedad</th><th>Proveedor</th><th>Descripcion</th><th>Metodo</th><th>Fecha</th></tr></thead>" +
             "<tbody id='tbodyTablaTransaccionesEnCursoV'></tbody><tbody id='tbodyTablaTransaccionesEnCursoC'></tbody>"
 
     var tbodyV = document.getElementById("tbodyTablaTransaccionesEnCursoV");
-    axios.get('/commerceTransaccion/transacciones/vendedor/' + cedula)
+    axios.get('/commerceTransaccion/transacciones/vendedor/' + localStorage.getItem('Actual'))
             .then(function (response) {
                 var ventasNull = response.data[0];
                 for (var x in response.data) {
@@ -181,7 +230,7 @@ function actualizarHistorialDeTransacciones() {
  */
 
 function actualizarAnadirProducto() {
-    //document.getElementById("cedulaUsuarioActual").innerHTML = cedulaActual;
+    document.getElementById("cedulaUsuarioActual").innerHTML = localStorage.getItem('Actual');
     axios.get('/commerceProducto/productos')
             .then(function (response) {
                 var selectCategoriaProducto = document.getElementById("selectCategoriaProducto");
